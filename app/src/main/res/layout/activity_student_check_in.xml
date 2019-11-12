@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".StudentCheckIn">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="128dp"
+        android:layout_marginBottom="90dp"
+        android:text="Please check in with your counselor. How are you doing?"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/buttonStudentImGood"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/buttonStudentImGood"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="82dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="82dp"
+        android:layout_marginBottom="40dp"
+        android:text="I'm good, don't need anything."
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@+id/buttonStudentImOkay"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <Button
+        android:id="@+id/buttonStudentImSad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="168dp"
+        android:text="I would like to talk."
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/buttonStudentImOkay"
+        app:layout_constraintHorizontal_bias="0.489"
+        app:layout_constraintStart_toStartOf="@+id/buttonStudentImOkay"
+        app:layout_constraintTop_toBottomOf="@+id/buttonStudentImOkay" />
+
+    <Button
+        android:id="@+id/buttonStudentImOkay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="34dp"
+        android:text="I'm okay, check back later."
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@+id/buttonStudentImSad"
+        app:layout_constraintEnd_toEndOf="@+id/buttonStudentImGood"
+        app:layout_constraintStart_toStartOf="@+id/buttonStudentImGood"
+        app:layout_constraintTop_toBottomOf="@+id/buttonStudentImGood" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

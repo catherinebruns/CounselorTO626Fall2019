@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".StudentScheduler">
+
+    <TextView
+        android:id="@+id/textViewMessage1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="33dp"
+        android:layout_marginTop="121dp"
+        android:layout_marginEnd="34dp"
+        android:layout_marginBottom="33dp"
+        android:text="TextView"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/textViewMessage2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Schedule an Appointment" />
+
+    <TextView
+        android:id="@+id/textViewMessage2"
+        android:layout_width="299dp"
+        android:layout_height="107dp"
+        android:layout_marginStart="53dp"
+        android:layout_marginTop="33dp"
+        android:layout_marginEnd="59dp"
+        android:layout_marginBottom="333dp"
+        android:text="Choose a date and time based on your Counselor's availability."
+        android:textAlignment="center"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/buttonStudentApptOk"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewMessage1" />
+
+    <Button
+        android:id="@+id/buttonStudentApptOk"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="156dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="167dp"
+        android:layout_marginBottom="31dp"
+        android:text="Ok!"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewMessage2" />
+</androidx.constraintlayout.widget.ConstraintLayout>
