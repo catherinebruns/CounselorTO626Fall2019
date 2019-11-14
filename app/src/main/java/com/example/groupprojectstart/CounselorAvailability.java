@@ -14,7 +14,7 @@ public class CounselorAvailability extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_counselor_availability);
+        setContentView(R.layout.activity_counselor_availability2);
     }
 
     public boolean onCreateOptionsMenu(Menu menu){
