@@ -10,7 +10,9 @@
         android:id="@+id/textViewCounselorAvailability"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="136dp"
+        android:layout_marginTop="176dp"
         android:text="Counselor Availability"
-        tools:layout_editor_absoluteX="152dp"
-        tools:layout_editor_absoluteY="171dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
