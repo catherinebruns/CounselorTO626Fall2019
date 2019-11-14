@@ -12,6 +12,7 @@ import android.view.MenuItem;
 public class CounselorCheckInManager extends AppCompatActivity {
 
     //test amy 9 am
+    //what it do, baby boo
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
