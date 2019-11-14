@@ -11,8 +11,8 @@ import android.view.MenuItem;
 
 public class CounselorCheckInManager extends AppCompatActivity {
 
-    //test amy 9 am
-    
+    //Hello Moto
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
