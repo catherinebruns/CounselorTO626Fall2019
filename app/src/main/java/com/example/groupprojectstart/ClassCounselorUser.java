@@ -1,16 +1,16 @@
 package com.example.groupprojectstart;
 
 public class ClassCounselorUser {
-    public String CounselorUserID;
-    public String CounselorFirstName;
-    public String CounselorLastName;
-    public String CounselorEmail;
+    public String counselorUserID;
+    public String counselorFirstName;
+    public String counselorLastName;
+    public String counselorEmail;
 
     public ClassCounselorUser(String UserID, String FirstName, String LastName, String Email){
-        this.CounselorUserID = UserID;
-        this.CounselorFirstName = FirstName;
-        this.CounselorLastName = LastName;
-        this.CounselorEmail = Email;
+        this.counselorUserID = UserID;
+        this.counselorFirstName = FirstName;
+        this.counselorLastName = LastName;
+        this.counselorEmail = Email;
     }
 
 }
