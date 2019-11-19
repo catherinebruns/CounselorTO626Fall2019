@@ -1,5 +1,5 @@
 package com.example.groupprojectstart;
-
+//amy
 public class ClassCheckIn {
 
     public String checkinID;
