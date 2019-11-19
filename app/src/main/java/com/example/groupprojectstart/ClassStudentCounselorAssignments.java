@@ -6,7 +6,7 @@ import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class ClassStudentCounselorAssignments extends AppCompatActivity {
+public class ClassStudentCounselorAssignments  {
 
     //StudentUserID
     //CounselorUserID
@@ -26,11 +26,7 @@ public class ClassStudentCounselorAssignments extends AppCompatActivity {
     }
 
 
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.counselormenu, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
+
 
 }
 
