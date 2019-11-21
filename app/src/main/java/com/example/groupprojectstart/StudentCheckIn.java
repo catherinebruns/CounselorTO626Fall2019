@@ -10,10 +10,17 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
+
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class StudentCheckIn extends AppCompatActivity implements View.OnClickListener{
 
     Button buttonImGood, buttonImOkay, buttonImSad;
+
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
+    DatabaseReference myRef = database.getReference("CheckInData");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,18 +83,25 @@ public class StudentCheckIn extends AppCompatActivity implements View.OnClickLis
 
     @Override
     public void onClick(View view) {
+        String CheckInButton = "";
+
         if (buttonImGood == view){
-            //need to enter what happens here
+        CheckInButton = "ImGood";
         }
         else if (buttonImOkay == view){
-            //need to enter what happens here
+         CheckInButton = "ImOkay";
 
         }
         else if (buttonImSad == view) {
+           CheckInButton = "ImSad";
+
             Intent ImSadIntent = new Intent(this, StudentScheduler.class);
             startActivity(ImSadIntent);
         }
 
+        ClassCheckIn createcheckinResponse = new ClassCheckIn("","teststudent",CheckInButton,"time1","time2");
+        myRef.push().setValue(createcheckinResponse);
+        Toast.makeText(this, "success", Toast.LENGTH_SHORT).show();
 
     }
 }
