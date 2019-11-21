@@ -14,7 +14,7 @@ import android.widget.EditText;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    Button buttonSignIn, buttonSignUp, buttonForgotPassword;
+    Button buttonSignIn, buttonSignUp, buttonForgotPassword,buttonStudentSignIn,buttonStudentSignUp;
     EditText editTextUsername, editTextPassword;
 
     @Override
