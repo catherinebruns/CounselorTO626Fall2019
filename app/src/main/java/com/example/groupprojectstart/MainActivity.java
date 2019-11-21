@@ -14,7 +14,9 @@ import android.widget.EditText;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    Button buttonSignIn, buttonSignUp, buttonForgotPassword,buttonStudentSignIn,buttonStudentSignUp;
+    Button buttonSignIn, buttonSignUp, buttonForgotPassword;
+    Button buttonStudentSignIn,buttonStudentSignUp;
+    Button buttonCounselorSignIn,buttonCouselorSignUp;
     EditText editTextUsername, editTextPassword;
 
     @Override
@@ -37,6 +39,38 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View view) {
         //need if statements for determining student or counselor account
+        // need to connect the register page after creating register page
+
+        if(view == buttonStudentSignIn){
+            Intent StudentSignInIntent = new Intent(this,StudentHome.class);
+            startActivity(StudentSignInIntent);
+
+        }else if(view == buttonStudentSignUp) {
+            Intent StudentSignUpIntent = new Intent(this, StudentHome.class);
+            startActivity(StudentSignUpIntent);
+
+        }else if(view == buttonCounselorSignIn) {
+            Intent CounselorSignInIntent = new Intent(this, CounselorHome.class);
+            startActivity(CounselorSignInIntent);
+
+        }else if(view == buttonCouselorSignUp) {
+            Intent CounselorSignUpIntent = new Intent(this, CounselorHome.class);
+            startActivity(CounselorSignUpIntent);
+
+        }else if(view == buttonForgotPassword) {
+            Intent ForgotPasswordIntent = new Intent(this, MainActivity.class);
+            startActivity(ForgotPasswordIntent);
+        }
+
+
+        if (editTextUsername.getText().toString().trim().equalsIgnoreCase("")) {
+            editTextUsername.setError("This field can not be blank");
+        }
+
+        if (editTextPassword.getText().toString().trim().equalsIgnoreCase("")) {
+            editTextPassword.setError("This field can not be blank");
+        }
+
 
     }
 
@@ -83,4 +117,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         return super.onOptionsItemSelected(item);
     }
+
+
+
 }
