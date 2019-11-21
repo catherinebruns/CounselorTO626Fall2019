@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
-//Inserting Dummy Navigation for Development Stages
+//Inserting Dummy Navigation for Development Stages  <<< Menu is not necessary in main page
     public boolean onCreateOptionsMenu(Menu menu){
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.dummymenu, menu);
