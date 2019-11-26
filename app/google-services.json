@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "370824440524",
+    "firebase_url": "https://to626counselorapp.firebaseio.com",
+    "project_id": "to626counselorapp",
+    "storage_bucket": "to626counselorapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:370824440524:android:83fb066ada76a8d9d03069",
+        "android_client_info": {
+          "package_name": "com.example.groupprojectstart"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "370824440524-eqbkh15ccik5jjdnkjilkicvc8t18evc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.groupprojectstart",
+            "certificate_hash": "3af1e7168f36a8db28299bcdfa3df9f82c4611ce"
+          }
+        },
+        {
+          "client_id": "370824440524-531qc6m10jhtb7prokq9teflj0h82ni0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDIAXmGj-OqOMn1To_37XIkJIuWh0FoAnE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "370824440524-531qc6m10jhtb7prokq9teflj0h82ni0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

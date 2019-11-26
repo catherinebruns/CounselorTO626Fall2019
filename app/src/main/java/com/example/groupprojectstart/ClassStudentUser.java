@@ -8,9 +8,10 @@ public class ClassStudentUser {
     public String studentEmail;
 
     public ClassStudentUser(String studentUserID, String studentFirstName, String studentLastName, String studentEmail) {
-        this.studentUserID = studentUserID;
+        this.studentEmail = studentEmail;
         this.studentFirstName = studentFirstName;
         this.studentLastName = studentLastName;
-        this.studentEmail = studentEmail;
+        this.studentUserID = studentUserID;
+
     }
 }

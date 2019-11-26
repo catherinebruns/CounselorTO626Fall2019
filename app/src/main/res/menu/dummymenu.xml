@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/CounselorAvailability"
+        android:title="CounselorAvailability" />
+    <item
+        android:id="@+id/CounselorCheckInManager"
+        android:title="CounselorCheckInManager" />
+    <item
+        android:id="@+id/CounselorHome"
+        android:title="CounselorHome" />
+    <item
+        android:id="@+id/MainActivity"
+        android:title="MainActivity" />
+    <item
+        android:id="@+id/StudentApptConfirmation"
+        android:title="StudentApptConfirmation" />
+    <item
+        android:id="@+id/StudentHome"
+        android:title="StudentHome" />
+    <item
+        android:id="@+id/StudentScheduler"
+        android:title="StudentScheduler" />
+    <item
+        android:id="@+id/StudentCheckIn"
+        android:title="StudentCheckIn" />
+</menu>

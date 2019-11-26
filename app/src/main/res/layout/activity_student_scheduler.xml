@@ -11,16 +11,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="33dp"
-        android:layout_marginTop="121dp"
+        android:layout_marginTop="160dp"
         android:layout_marginEnd="34dp"
         android:layout_marginBottom="33dp"
-        android:text="TextView"
+        android:text="Schedule an AppointmentSchedule an Appointment"
         android:textSize="30sp"
         app:layout_constraintBottom_toTopOf="@+id/textViewMessage2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="Schedule an Appointment" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textViewMessage2"
@@ -29,7 +28,7 @@
         android:layout_marginStart="53dp"
         android:layout_marginTop="33dp"
         android:layout_marginEnd="59dp"
-        android:layout_marginBottom="333dp"
+        android:layout_marginBottom="32dp"
         android:text="Choose a date and time based on your Counselor's availability."
         android:textAlignment="center"
         android:textSize="24sp"
@@ -49,6 +48,7 @@
         android:text="Ok!"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewMessage2" />
 </androidx.constraintlayout.widget.ConstraintLayout>
