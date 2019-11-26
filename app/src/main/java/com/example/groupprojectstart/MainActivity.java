@@ -38,9 +38,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View view) {
-        //need if statements for determining student or counselor account
-        // need to connect the register page after creating register page
-
+//need to connect these to firebase
         if(view == buttonStudentSignIn){
             Intent StudentSignInIntent = new Intent(this,StudentHome.class);
             startActivity(StudentSignInIntent);
