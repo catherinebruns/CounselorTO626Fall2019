@@ -15,6 +15,8 @@ import android.widget.Toast;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.Date;
+
 public class StudentCheckIn extends AppCompatActivity implements View.OnClickListener{
 
     Button buttonImGood, buttonImOkay, buttonImSad;
@@ -84,6 +86,8 @@ public class StudentCheckIn extends AppCompatActivity implements View.OnClickLis
     @Override
     public void onClick(View view) {
         String CheckInButton = "";
+
+
 
         if (buttonImGood == view){
         CheckInButton = "ImGood";
