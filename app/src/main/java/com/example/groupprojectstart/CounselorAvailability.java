@@ -15,7 +15,13 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 
 public class CounselorAvailability extends AppCompatActivity implements View.OnClickListener{
 //test
@@ -24,9 +30,13 @@ public class CounselorAvailability extends AppCompatActivity implements View.OnC
     CalendarView CalendarAvailability;
     EditText EditTextTime;
     TextView TextViewDate;
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
+    DatabaseReference myRef = database.getReference("Slots");
+
+
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_counselor_availability2);
 
@@ -40,15 +50,11 @@ public class CounselorAvailability extends AppCompatActivity implements View.OnC
         CalendarAvailability.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView calendarView, int i, int i1, int i2) {
-                String date = (i1+1) + "/" + i2 + "/" + i;
+                 String date = (i1+1) + "/" + i2 + "/" + i;
   //              Toast.makeText(CounselorAvailability.this, date , Toast.LENGTH_SHORT).show();
                 TextViewDate.setText(date);
             }
         });
-
-
-
-
 
     }
 
@@ -101,8 +107,21 @@ public class CounselorAvailability extends AppCompatActivity implements View.OnC
 
         if(ButtonSubmitAvailability == view){
           String time = EditTextTime.getText().toString();
-          String date = TextViewDate.getText().toString();
-            Toast.makeText(this,"Add to firebase" + date +" "+time, Toast.LENGTH_SHORT).show();
+          String date2 = TextViewDate.getText().toString();
 
-    }}
+
+            ClassAppointmentSlots createSlot = new ClassAppointmentSlots(date2 + " " + time,"","","","","","","");
+                     myRef.push().setValue(createSlot);
+
+            Toast.makeText(this,"Added to firebase :" + date2 + " " + time, Toast.LENGTH_SHORT).show();
+
+//           ClassCheckIn createcheckinResponse = new ClassCheckIn("","teststudent",CheckInButton,"time1","time2");
+  //          myRef.push().setValue(createcheckinResponse);
+   //         Toast.makeText(this, "success", Toast.LENGTH_SHORT).show();
+
+
+
+        }}
+
+
 }

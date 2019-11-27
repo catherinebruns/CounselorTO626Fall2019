@@ -6,11 +6,11 @@ public class ClassAppointmentSlots {
 
     public String AppointmentID;
     //public String AppointmentDay;
-    public Date AppointmentStart =  new Date();
-    public Date AppointmentEnd = new Date();
+ //   public Date AppointmentStart =  new Date();
+ //   public Date AppointmentEnd = new Date();
 
- //   public String AppointmentStartTime;
- //   public String AppointmentEndTime;
+   public String AppointmentStart;
+    public String AppointmentEnd;
     public String AppointmentStatus;
     public String AppointmentStudentUserID;
     public String AppointmentCounselorUserID;
@@ -20,25 +20,17 @@ public class ClassAppointmentSlots {
     public ClassAppointmentSlots() {
     }
 
-    public ClassAppointmentSlots(Date appointmentStart, Date appointmentEnd, Date AppointmentCreationTimestamp) {
+    public ClassAppointmentSlots(String appointmentStart, String appointmentEnd, String AppointmentCreationTimestamp, String appointmentID, String appointmentStatus, String appointmentStudentUserID,
+                                 String appointmentCounselorUserID, String appointmentReason) {
         AppointmentStart = appointmentStart;
         AppointmentEnd = appointmentEnd;
-
-    }
-
-    public ClassAppointmentSlots(Date appointmentCreationTimestamp) {
-        AppointmentCreationTimestamp = appointmentCreationTimestamp;
-    }
-
-    public ClassAppointmentSlots(String appointmentID, String appointmentStatus, String appointmentStudentUserID,
-                                 String appointmentCounselorUserID, String appointmentReason) {
-
         AppointmentID = appointmentID;
         AppointmentStatus = appointmentStatus;
         AppointmentStudentUserID = appointmentStudentUserID;
         AppointmentCounselorUserID = appointmentCounselorUserID;
         AppointmentReason = appointmentReason;
     }
+
 
 
 
