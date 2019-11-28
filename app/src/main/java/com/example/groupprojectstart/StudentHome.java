@@ -15,6 +15,8 @@ public class StudentHome extends AppCompatActivity implements View.OnClickListen
 
     Button buttonStudentCheckIn, buttonStudentScheduleAppt;
 
+    // after authentication is finished, the screen should show the student's name
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

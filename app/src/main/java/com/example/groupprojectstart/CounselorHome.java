@@ -12,6 +12,8 @@ import android.view.View;
 
 public class CounselorHome extends AppCompatActivity implements View.OnClickListener{
 
+    // after authentication is finished, the screen should show the counselor's name
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
