@@ -7,39 +7,29 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.Button;
+import android.widget.EditText;
 
-public class RegisterActivity extends AppCompatActivity implements View.OnClickListener{
+public class RegisterStudentActivity extends AppCompatActivity {
 
-    EditText editRegisterTitle, editRegisterRoomNumber, editRegisterEmail, editRegisterLastName;
-    EditText editRegisterFirstName;
-    Button buttonRegisterSubmit;
+    Button buttonStudentRegisterSubmit;
+    EditText editTextStudentFirstName, editTextStudentLastName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register);
+        setContentView(R.layout.activity_register_student);
 
-    buttonRegisterSubmit = findViewById(R.id.buttonRegisterSubmit);
-    editRegisterEmail = findViewById(R.id.editRegisterEmail);
-    editRegisterFirstName = findViewById(R.id.editRegisterFirstName);
-    editRegisterLastName = findViewById(R.id.editRegisterLastName);
-    editRegisterRoomNumber = findViewById(R.id.editRegisterRoomNumber);
-    editRegisterTitle = findViewById(R.id.editRegisterTitle);
+        buttonStudentRegisterSubmit = findViewById(R.id.buttonRegisterSubmit);
+        editTextStudentFirstName = findViewById(R.id.editRegisterFirstName);
+        editTextStudentLastName = findViewById(R.id.editRegisterLastName);
 
-    buttonRegisterSubmit.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            validate(editRegisterEmail.getText(), editRegisterFirstName.getText(),
-                    editRegisterLastName.getText(), editRegisterRoomNumber.getText(),
-                    editRegisterTitle.getText())
-
-            )
-        }
-    });
-
-
+        buttonStudentRegisterSubmit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                validate(editTextStudentFirstName.getText(), editTextStudentLastName.getText())
+            }
+        });
 
     }
 
