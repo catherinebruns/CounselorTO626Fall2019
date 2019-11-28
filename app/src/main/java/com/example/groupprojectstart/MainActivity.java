@@ -14,7 +14,7 @@ import android.widget.EditText;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    Button buttonSignIn, buttonSignUp, buttonForgotPassword;
+    Button buttonSignIn, buttonSignUp;
     Button buttonStudentSignIn,buttonStudentSignUp;
     Button buttonCounselorSignIn,buttonCouselorSignUp;
     EditText editTextUsername, editTextPassword;
@@ -26,13 +26,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         buttonSignIn = findViewById(R.id.buttonStudentSignIn);
         buttonSignUp = findViewById(R.id.buttonStudentSignUp);
-        buttonForgotPassword = findViewById(R.id.buttonForgotPassword);
         editTextPassword = findViewById(R.id.editTextPassword);
         editTextUsername = findViewById(R.id.editTextUsername);
 
         buttonSignIn.setOnClickListener(this);
         buttonSignUp.setOnClickListener(this);
-        buttonForgotPassword.setOnClickListener(this);
+
 
     }
 
@@ -55,9 +54,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Intent CounselorSignUpIntent = new Intent(this, CounselorHome.class);
             startActivity(CounselorSignUpIntent);
 
-        }else if(view == buttonForgotPassword) {
-            Intent ForgotPasswordIntent = new Intent(this, MainActivity.class);
-            startActivity(ForgotPasswordIntent);
         }
 
 
