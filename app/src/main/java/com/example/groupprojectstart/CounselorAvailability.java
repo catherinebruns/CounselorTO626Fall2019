@@ -109,11 +109,14 @@ public class CounselorAvailability extends AppCompatActivity implements View.OnC
           String time = EditTextTime.getText().toString();
           String date2 = TextViewDate.getText().toString();
 
+            Calendar calendar = Calendar.getInstance();
+            int currentHour = calendar.get(Calendar.HOUR_OF_DAY);
+             int currentMinute = calendar.get(Calendar.MINUTE);
 
-            ClassAppointmentSlots createSlot = new ClassAppointmentSlots(date2 + " " + time,"","","","","","","");
+            ClassAppointmentSlots createSlot = new ClassAppointmentSlots(date2 + " " + time,"", currentHour + ":" + currentMinute,"","","","","");
                      myRef.push().setValue(createSlot);
 
-            Toast.makeText(this,"Added to firebase :" + date2 + " " + time, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,"Added to firebase :" + date2 + " " + time , Toast.LENGTH_SHORT).show();
 
 //           ClassCheckIn createcheckinResponse = new ClassCheckIn("","teststudent",CheckInButton,"time1","time2");
   //          myRef.push().setValue(createcheckinResponse);
