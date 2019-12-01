@@ -14,7 +14,7 @@ import android.widget.EditText;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    Button buttonSignIn, buttonSignUp;
+    //why do we have two separate options for button sign in/up here?
     Button buttonStudentSignIn,buttonStudentSignUp;
     Button buttonCounselorSignIn,buttonCouselorSignUp;
     EditText editTextUsername, editTextPassword;
@@ -24,13 +24,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        buttonSignIn = findViewById(R.id.buttonStudentSignIn);
-        buttonSignUp = findViewById(R.id.buttonStudentSignUp);
+        buttonStudentSignIn = findViewById(R.id.buttonStudentSignIn);
+        buttonCounselorSignIn = findViewById(R.id.buttonCounselorSignIn);
         editTextPassword = findViewById(R.id.editTextPassword);
         editTextUsername = findViewById(R.id.editTextUsername);
 
-        buttonSignIn.setOnClickListener(this);
-        buttonSignUp.setOnClickListener(this);
+        buttonStudentSignIn.setOnClickListener(this);
+        buttonCounselorSignIn.setOnClickListener(this);
+        buttonCouselorSignUp.setOnClickListener(this);
+        buttonStudentSignUp.setOnClickListener(this);
 
 
     }
@@ -38,25 +40,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View view) {
 //need to connect these to firebase
-        if(view == buttonStudentSignIn){
+
+        //Connecting 4 buttons on Main Activity Page to log in or sign up
+        if(buttonStudentSignIn == view){
             Intent StudentSignInIntent = new Intent(this,StudentHome.class);
             startActivity(StudentSignInIntent);
 
-        }else if(view == buttonStudentSignUp) {
-            Intent StudentSignUpIntent = new Intent(this, StudentHome.class);
+        }else if(buttonStudentSignUp == view) {
+            Intent StudentSignUpIntent = new Intent(this, RegisterStudentActivity.class);
             startActivity(StudentSignUpIntent);
 
-        }else if(view == buttonCounselorSignIn) {
+        }else if(buttonCounselorSignIn == view) {
             Intent CounselorSignInIntent = new Intent(this, CounselorHome.class);
             startActivity(CounselorSignInIntent);
 
-        }else if(view == buttonCouselorSignUp) {
-            Intent CounselorSignUpIntent = new Intent(this, CounselorHome.class);
+        }else if(buttonCouselorSignUp == view) {
+            Intent CounselorSignUpIntent = new Intent(this, RegisterActivity.class);
             startActivity(CounselorSignUpIntent);
-
         }
-
-
         if (editTextUsername.getText().toString().trim().equalsIgnoreCase("")) {
             editTextUsername.setError("This field can not be blank");
         }
@@ -65,8 +66,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             editTextPassword.setError("This field can not be blank");
         }
 
-
     }
+
+
 
 //Inserting Dummy Navigation for Development Stages  <<< Menu is not necessary in main page
     public boolean onCreateOptionsMenu(Menu menu){
@@ -74,7 +76,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         inflater.inflate(R.menu.dummymenu, menu);
         return  super.onCreateOptionsMenu(menu);
     }
-
     @Override
     public  boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.CounselorAvailability) {

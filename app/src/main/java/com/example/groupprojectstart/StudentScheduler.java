@@ -26,6 +26,7 @@ public class StudentScheduler extends AppCompatActivity implements View.OnClickL
     }
 
     @Override
+    //Connecting button navigation for OK button
     public void onClick(View view) {
         if (buttonStudentApptOk == view){
             Intent StudentApptOkIntent = new Intent(this, StudentApptConfirmation.class);
