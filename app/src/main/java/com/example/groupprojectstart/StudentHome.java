@@ -10,12 +10,12 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class StudentHome extends AppCompatActivity implements View.OnClickListener {
 
     Button buttonStudentCheckIn, buttonStudentScheduleAppt;
-
-    // after authentication is finished, the screen should show the student's name
+    TextView textViewStudentWelcome,textViewStudentWelcome2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

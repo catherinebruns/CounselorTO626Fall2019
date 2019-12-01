@@ -22,25 +22,23 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         setContentView(R.layout.activity_register);
 
     buttonRegisterSubmit = findViewById(R.id.buttonRegisterSubmit);
+    buttonRegisterSubmit.setOnClickListener(this);
+
     editRegisterEmail = findViewById(R.id.editRegisterEmail);
     editRegisterFirstName = findViewById(R.id.editRegisterFirstName);
     editRegisterLastName = findViewById(R.id.editRegisterLastName);
     editRegisterRoomNumber = findViewById(R.id.editRegisterRoomNumber);
     editRegisterTitle = findViewById(R.id.editRegisterTitle);
 
-    buttonRegisterSubmit.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            validate(editRegisterEmail.getText(), editRegisterFirstName.getText(),
-                    editRegisterLastName.getText(), editRegisterRoomNumber.getText(),
-                    editRegisterTitle.getText())
+    }
 
-            )
-        }
-    });
+    @Override
+    public void onClick(View view) {
+        //validate(editRegisterEmail.getText(), editRegisterFirstName.getText(),
+        //        editRegisterLastName.getText(), editRegisterRoomNumber.getText(),
+        //        editRegisterTitle.getText());
 
-
-
+        //)
     }
 
     @Override

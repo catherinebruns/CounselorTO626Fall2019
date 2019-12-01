@@ -10,7 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-public class RegisterStudentActivity extends AppCompatActivity {
+public class RegisterStudentActivity extends AppCompatActivity implements View.OnClickListener{
 
     Button buttonStudentRegisterSubmit;
     EditText editTextStudentFirstName, editTextStudentLastName;
@@ -24,13 +24,13 @@ public class RegisterStudentActivity extends AppCompatActivity {
         editTextStudentFirstName = findViewById(R.id.editRegisterFirstName);
         editTextStudentLastName = findViewById(R.id.editRegisterLastName);
 
-        buttonStudentRegisterSubmit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                validate(editTextStudentFirstName.getText(), editTextStudentLastName.getText())
-            }
-        });
+        buttonStudentRegisterSubmit.setOnClickListener(this);
 
+    }
+
+    @Override
+    public void onClick(View view) {
+        //        validate(editTextStudentFirstName.getText(), editTextStudentLastName.getText());
     }
 
     @Override

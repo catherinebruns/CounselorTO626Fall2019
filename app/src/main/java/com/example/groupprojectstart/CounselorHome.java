@@ -9,10 +9,11 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 public class CounselorHome extends AppCompatActivity implements View.OnClickListener{
 
-    // after authentication is finished, the screen should show the counselor's name
+    TextView textViewCounselorWelcome,textViewCounselorWelcome2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
