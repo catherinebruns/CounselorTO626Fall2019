@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     //why do we have two separate options for button sign in/up here?
     Button buttonStudentSignIn,buttonStudentSignUp;
-    Button buttonCounselorSignIn,buttonCouselorSignUp;
+    Button buttonCounselorSignIn,buttonCounselorSignUp;
     EditText editTextUsername, editTextPassword;
 
     @Override
@@ -26,12 +26,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         buttonStudentSignIn = findViewById(R.id.buttonStudentSignIn);
         buttonCounselorSignIn = findViewById(R.id.buttonCounselorSignIn);
+        buttonStudentSignUp = findViewById(R.id.buttonStudentSignUp);
+        buttonCounselorSignUp = findViewById(R.id.buttonCounselorSignUp);
         editTextPassword = findViewById(R.id.editTextPassword);
         editTextUsername = findViewById(R.id.editTextUsername);
 
         buttonStudentSignIn.setOnClickListener(this);
         buttonCounselorSignIn.setOnClickListener(this);
-        buttonCouselorSignUp.setOnClickListener(this);
+        buttonCounselorSignUp.setOnClickListener(this);
         buttonStudentSignUp.setOnClickListener(this);
 
 
@@ -54,7 +56,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Intent CounselorSignInIntent = new Intent(this, CounselorHome.class);
             startActivity(CounselorSignInIntent);
 
-        }else if(buttonCouselorSignUp == view) {
+        }else if(buttonCounselorSignUp == view) {
             Intent CounselorSignUpIntent = new Intent(this, RegisterActivity.class);
             startActivity(CounselorSignUpIntent);
         }
