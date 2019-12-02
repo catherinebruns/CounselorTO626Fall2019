@@ -24,6 +24,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //creating buttons for main activity page
+
         buttonStudentSignIn = findViewById(R.id.buttonStudentSignIn);
         buttonCounselorSignIn = findViewById(R.id.buttonCounselorSignIn);
         buttonStudentSignUp = findViewById(R.id.buttonStudentSignUp);
