@@ -85,9 +85,8 @@ public class StudentCheckIn extends AppCompatActivity implements View.OnClickLis
 
     @Override
     public void onClick(View view) {
+        //Defining the variable which will be added to firebase
         String CheckInButton = "";
-
-
 
         if (buttonImGood == view){
         CheckInButton = "ImGood";
@@ -98,11 +97,11 @@ public class StudentCheckIn extends AppCompatActivity implements View.OnClickLis
         }
         else if (buttonImSad == view) {
            CheckInButton = "ImSad";
-
+            //have students create an appointment
             Intent ImSadIntent = new Intent(this, StudentScheduler.class);
             startActivity(ImSadIntent);
         }
-
+        //Adding the firebase data on the checkin
         ClassCheckIn createcheckinResponse = new ClassCheckIn("","teststudent",CheckInButton,"time1","time2");
         myRef.push().setValue(createcheckinResponse);
         Toast.makeText(this, "success", Toast.LENGTH_SHORT).show();
