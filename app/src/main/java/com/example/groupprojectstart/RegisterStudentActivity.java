@@ -20,7 +20,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class RegisterStudentActivity extends AppCompatActivity implements View.OnClickListener{
+public class RegisterStudentActivity extends AppCompatActivity implements View.OnClickListener {
 
     private FirebaseAuth mAuth;
 
@@ -32,7 +32,6 @@ public class RegisterStudentActivity extends AppCompatActivity implements View.O
     //FirebaseDatabase database = FirebaseDatabase.getInstance();
     //DatabaseReference myref = database.getReference("StudentID");
 
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,14 +50,38 @@ public class RegisterStudentActivity extends AppCompatActivity implements View.O
 
     @Override
     public void onClick(View view) {
-        //        validate(editTextStudentFirstName.getText(), editTextStudentLastName.getText());
+        //validate(editRegisterEmail.getText(), editRegisterFirstName.getText(),
+        //        editRegisterLastName.getText(), editRegisterRoomNumber.getText(),
+        //        editRegisterTitle.getText());
 
-        if (buttonStudentRegisterSubmit == view) {
+        //)
 
-            makeNewUsers(editStudentRegisterEmail.getText().toString(), editStudentRegisterPassword.getText().toString());
 
+        mAuth.createUserWithEmailAndPassword(editStudentRegisterEmail.getText().toString(), editStudentRegisterPassword.getText().toString())
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            //if login is successful
+
+                            Toast.makeText(RegisterStudentActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
+
+                            //creating a new intent to send you back to the main activity once registration is successful
+                            Intent intent = new Intent(RegisterStudentActivity.this, MainActivity.class);
+                            startActivity(intent);
+
+                        } else {
+
+                            //if login is unsuccessful
+
+                            Toast.makeText(RegisterStudentActivity.this, "Failed", Toast.LENGTH_SHORT).show();
+
+
+                        }
+
+                    }
+                });
     }
-
 
     //Inserting Dummy Navigation for Development Stages
     public boolean onCreateOptionsMenu(Menu menu){
@@ -68,8 +91,7 @@ public class RegisterStudentActivity extends AppCompatActivity implements View.O
     }
 
     @Override
-    public  boolean onOptionsItemSelected(@NonNull MenuItem MenuItem item;
-        item) {
+    public  boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.CounselorAvailability) {
             Intent HomeIntent = new Intent(this, CounselorAvailability.class);
             startActivity(HomeIntent);
@@ -104,33 +126,4 @@ public class RegisterStudentActivity extends AppCompatActivity implements View.O
         }
         return super.onOptionsItemSelected(item);
     }
-
-        public void makeNewUsers  (String email, String password) {
-
-            mAuth.createUserWithEmailAndPassword(email, password)
-                    .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                            if (task.isSuccessful()) {
-                                //if login is successful
-
-                                Toast.makeText(RegisterActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
-
-                                //creating a new intent to send you back to the main activity once registration is successful
-                                Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
-                                startActivity(intent);
-
-                            } else {
-
-                                //if login is unsuccessful
-
-                                Toast.makeText(RegisterActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-
-
-                            }
-
-                        }
-
-                        public void loginNewUsers (String email, String password)
-                        }
 }

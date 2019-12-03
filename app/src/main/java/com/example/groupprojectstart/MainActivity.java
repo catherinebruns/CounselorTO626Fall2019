@@ -12,19 +12,25 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
-    //creating items for Main Activity page
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     //why do we have two separate options for button sign in/up here?
     Button buttonStudentSignIn,buttonStudentSignUp;
     Button buttonCounselorSignIn,buttonCounselorSignUp;
     EditText editTextUsername, editTextPassword;
 
+    //allows user to log in us
+    public FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //creating buttons for main activity page
 
         buttonStudentSignIn = findViewById(R.id.buttonStudentSignIn);
         buttonCounselorSignIn = findViewById(R.id.buttonCounselorSignIn);
@@ -38,12 +44,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         buttonCounselorSignUp.setOnClickListener(this);
         buttonStudentSignUp.setOnClickListener(this);
 
+
     }
 
-    //Authentification by E-mail and password
+   // @Override
+    //protected void onStart() {
+       // super.onStart();
+        //if the person is logged in, then do whatever is in this if statement; for example, skip
+        // log in page all together
+       // if(currentUser =! null) {
+
+      //  }
+   // }
+
     @Override
     public void onClick(View view) {
-        //Later need to connect these to firebase authentification @Rohan
+//need to connect these to firebase
 
         //Connecting 4 buttons on Main Activity Page to log in or sign up
         if(buttonStudentSignIn == view){
@@ -72,8 +88,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
-    //Inserting Dummy Navigation for Development Stages  <<< Menu is not necessary in main page
-    // Will be deleted after develoment stages @Amy
+
+
+//Inserting Dummy Navigation for Development Stages  <<< Menu is not necessary in main page
     public boolean onCreateOptionsMenu(Menu menu){
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.dummymenu, menu);
@@ -115,5 +132,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         return super.onOptionsItemSelected(item);
     }
+
+
 
 }
