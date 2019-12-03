@@ -21,20 +21,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/textViewMessage2"
-        android:layout_width="299dp"
-        android:layout_height="107dp"
-        android:layout_marginStart="53dp"
-        android:layout_marginEnd="59dp"
-        android:layout_marginBottom="150dp"
-        android:text="Choose a date and time based on your Counselor's availability."
-        android:textAlignment="center"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/buttonStudentApptOk"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewMessage1" />
+        <TextView
+            android:id="@+id/textViewMessage2"
+            android:layout_width="299dp"
+            android:layout_height="107dp"
+            android:layout_marginStart="53dp"
+            android:layout_marginEnd="59dp"
+            android:layout_marginBottom="150dp"
+            android:text="Choose a date and time based on availability and let your counselor know what you would like to discuss at your appointment."
+            android:textAlignment="center"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@+id/buttonStudentApptOk"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewMessage1" />
 
     <Button
         android:id="@+id/buttonStudentApptOk"
@@ -61,4 +61,19 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewMessage2" />
+
+        <TextView
+            android:id="@+id/reasonHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="33dp"
+            android:layout_marginEnd="270dp"
+            android:layout_marginBottom="28dp"
+            android:text="Topic for discussion"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toTopOf="@+id/spinnerReason"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewMessage2" />
 </androidx.constraintlayout.widget.ConstraintLayout>
