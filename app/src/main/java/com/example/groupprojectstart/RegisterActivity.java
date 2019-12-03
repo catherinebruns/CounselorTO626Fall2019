@@ -126,6 +126,10 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                             //if login is successful
 
                             Toast.makeText(RegisterActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
+                            
+                            //creating a new intent to send you back to the main activity once registration is successful
+                            Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
+                            startActivity(intent);
 
                         } else {
 
