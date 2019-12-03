@@ -10,11 +10,11 @@
         android:id="@+id/editRegisterTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="99dp"
-        android:layout_marginTop="129dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="100dp"
         android:ems="10"
+        android:hint="Title - Mr., Mrs., or Ms. "
         android:inputType="textPersonName"
-        android:text="Title - Mr., Mrs., or Ms. "
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -25,8 +25,8 @@
         android:layout_marginStart="100dp"
         android:layout_marginTop="28dp"
         android:ems="10"
+        android:hint="Room Number"
         android:inputType="textPersonName"
-        android:text="Room Number"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editRegisterEmail" />
 
@@ -37,8 +37,8 @@
         android:layout_marginStart="100dp"
         android:layout_marginTop="28dp"
         android:ems="10"
+        android:hint="Email Address"
         android:inputType="textPersonName"
-        android:text="Email Address"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editRegisterLastName" />
 
@@ -49,8 +49,8 @@
         android:layout_marginStart="100dp"
         android:layout_marginTop="28dp"
         android:ems="10"
+        android:hint="Last Name"
         android:inputType="textPersonName"
-        android:text="Last Name"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editRegisterFirstName" />
 
@@ -61,8 +61,8 @@
         android:layout_marginStart="99dp"
         android:layout_marginTop="28dp"
         android:ems="10"
+        android:hint="First Name"
         android:inputType="textPersonName"
-        android:text="First Name"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editRegisterTitle" />
 
@@ -70,18 +70,23 @@
         android:id="@+id/buttonRegisterSubmit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="159dp"
-        android:layout_marginTop="37dp"
+        android:layout_marginStart="160dp"
+        android:layout_marginTop="22dp"
+        android:layout_marginBottom="164dp"
         android:text="Submit"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editRegisterRoomNumber" />
+        app:layout_constraintTop_toBottomOf="@+id/editRegisterPassword" />
 
     <EditText
         android:id="@+id/editRegisterPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="14dp"
         android:ems="10"
+        android:hint="Password"
         android:inputType="textPassword"
-        tools:layout_editor_absoluteX="55dp"
-        tools:layout_editor_absoluteY="45dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editRegisterRoomNumber" />
 </androidx.constraintlayout.widget.ConstraintLayout>
