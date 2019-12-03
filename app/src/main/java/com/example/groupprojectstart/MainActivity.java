@@ -12,12 +12,18 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     //why do we have two separate options for button sign in/up here?
     Button buttonStudentSignIn,buttonStudentSignUp;
     Button buttonCounselorSignIn,buttonCounselorSignUp;
     EditText editTextUsername, editTextPassword;
+
+    //allows user to log in us
+    public FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +45,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         buttonStudentSignUp.setOnClickListener(this);
 
 
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        //if the person is logged in, then do whatever is in this if statement; for example, skip
+        // log in page all together
+        if(currentUser =! null) {
+
+        }
     }
 
     @Override
