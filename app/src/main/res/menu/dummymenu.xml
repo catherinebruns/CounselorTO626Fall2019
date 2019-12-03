@@ -26,4 +26,10 @@
     <item
         android:id="@+id/StudentCheckIn"
         android:title="StudentCheckIn" />
+    <item
+        android:id="@+id/RegisterStudent"
+        android:title="RegisterStudent" />
+    <item
+        android:id="@+id/Register"
+        android:title="Register" />
 </menu>

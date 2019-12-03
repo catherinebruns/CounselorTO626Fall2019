@@ -94,6 +94,14 @@ public class StudentScheduler extends AppCompatActivity implements View.OnClickL
             Intent MyAvailabilityIntent = new Intent(this, StudentScheduler.class);
             startActivity(MyAvailabilityIntent);
         }
+        else if (item.getItemId() == R.id.Register){
+            Intent RegisterIntent = new Intent(this, RegisterActivity.class);
+            startActivity(RegisterIntent);
+        }
+        else if (item.getItemId() == R.id.RegisterStudent){
+            Intent RegisterStudentIntent = new Intent(this, RegisterStudentActivity.class);
+            startActivity(RegisterStudentIntent);
+        }
         return super.onOptionsItemSelected(item);
     }
 

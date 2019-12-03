@@ -38,7 +38,7 @@ public class RegisterStudentActivity extends AppCompatActivity implements View.O
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_student);
 
-        buttonStudentRegisterSubmit = findViewById(R.id.buttonRegisterSubmit);
+        buttonStudentRegisterSubmit = findViewById(R.id.buttonStudentRegisterSubmit);
         editStudentRegisterFirstName = findViewById(R.id.editRegisterFirstName);
         editStudentRegisterLastName = findViewById(R.id.editRegisterLastName);
         editStudentRegisterPassword = findViewById(R.id.editRegisterPassword);
@@ -123,6 +123,14 @@ public class RegisterStudentActivity extends AppCompatActivity implements View.O
         else if (item.getItemId() == R.id.StudentScheduler){
             Intent MyAvailabilityIntent = new Intent(this, StudentScheduler.class);
             startActivity(MyAvailabilityIntent);
+        }
+        else if (item.getItemId() == R.id.Register){
+            Intent RegisterIntent = new Intent(this, RegisterActivity.class);
+            startActivity(RegisterIntent);
+        }
+        else if (item.getItemId() == R.id.RegisterStudent){
+            Intent RegisterStudentIntent = new Intent(this, RegisterStudentActivity.class);
+            startActivity(RegisterStudentIntent);
         }
         return super.onOptionsItemSelected(item);
     }
