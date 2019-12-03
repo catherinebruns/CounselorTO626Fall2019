@@ -12,9 +12,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     //creating items for Main Activity page
@@ -23,9 +20,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Button buttonStudentSignIn,buttonStudentSignUp;
     Button buttonCounselorSignIn,buttonCounselorSignUp;
     EditText editTextUsername, editTextPassword;
-
-    //allows user to log in us
-    public FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,16 +41,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     //Authentification by E-mail and password
-    @Override
-    protected void onStart() {
-        super.onStart();
-        //if the person is logged in, then do whatever is in this if statement; for example, skip
-        // log in page all together
-        if(currentUser =! null) {
-
-        }
-    }
-
     @Override
     public void onClick(View view) {
         //Later need to connect these to firebase authentification @Rohan
