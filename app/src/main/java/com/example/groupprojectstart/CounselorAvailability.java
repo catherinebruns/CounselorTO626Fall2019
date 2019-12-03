@@ -9,26 +9,25 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CalendarView;
-import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
-import java.util.Locale;
 
-public class CounselorAvailability extends AppCompatActivity implements View.OnClickListener{
-//test
+public class CounselorAvailability extends AppCompatActivity implements AdapterView.OnItemSelectedListener, View.OnClickListener {
+//test View.OnClickListener AdapterView.OnItemSelectedListener,
 
     Button ButtonSubmitAvailability;
     CalendarView CalendarAvailability;
-    EditText EditTextTime;
+    Spinner SpinnerTimeSelection;
     TextView TextViewDate;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference myRef = database.getReference("Slots");
@@ -41,8 +40,15 @@ public class CounselorAvailability extends AppCompatActivity implements View.OnC
 
         ButtonSubmitAvailability = findViewById(R.id.buttonCounselorAvailabilitySubmit);
         CalendarAvailability = findViewById(R.id.calendarView1);
-        EditTextTime = findViewById(R.id.editTextTime);
         TextViewDate = findViewById(R.id.textViewDate);
+
+      SpinnerTimeSelection = findViewById(R.id.spinnerTimeSelection);
+
+      ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.TimeOptions, android.R.layout.simple_spinner_item);
+        // Specify the layout to use when the list of choices appears
+              adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        // Apply the adapter to the spinner
+              SpinnerTimeSelection.setAdapter(adapter);
 
         ButtonSubmitAvailability.setOnClickListener(this);
 
@@ -54,8 +60,9 @@ public class CounselorAvailability extends AppCompatActivity implements View.OnC
                 TextViewDate.setText(date);
             }
         });
-
     }
+
+
 
     //Inserting Dummy Navigation for Development Stages
     public boolean onCreateOptionsMenu(Menu menu){
@@ -105,25 +112,31 @@ public class CounselorAvailability extends AppCompatActivity implements View.OnC
     public void onClick(View view) {
 
         if(ButtonSubmitAvailability == view){
-          String time = EditTextTime.getText().toString();
+    //      String time = EditTextTime.getSelectedItem().toString();
           String date2 = TextViewDate.getText().toString();
 
             Calendar calendar = Calendar.getInstance();
             int currentHour = calendar.get(Calendar.HOUR_OF_DAY);
              int currentMinute = calendar.get(Calendar.MINUTE);
+            String TimeSelection = SpinnerTimeSelection.getSelectedItem().toString();
 
-            ClassAppointmentSlots createSlot = new ClassAppointmentSlots(date2 + " " + time,"", currentHour + ":" + currentMinute,"","","","","");
+            ClassAppointmentSlots createSlot = new ClassAppointmentSlots(date2 + " " + TimeSelection  ,"", currentHour + ":" + currentMinute,"","","","","");
                      myRef.push().setValue(createSlot);
 
-            Toast.makeText(this,"Added to firebase :" + date2 + " " + time , Toast.LENGTH_SHORT).show();
-
-//           ClassCheckIn createcheckinResponse = new ClassCheckIn("","teststudent",CheckInButton,"time1","time2");
-  //          myRef.push().setValue(createcheckinResponse);
-   //         Toast.makeText(this, "success", Toast.LENGTH_SHORT).show();
-
-
+            Toast.makeText(this,"Added to firebase :" + date2  , Toast.LENGTH_SHORT).show();
 
         }}
+
+
+    @Override
+    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+        String TimeSelection = SpinnerTimeSelection.getSelectedItem().toString();
+               Toast.makeText(this, TimeSelection, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> adapterView) {
+    }
 
 
 }

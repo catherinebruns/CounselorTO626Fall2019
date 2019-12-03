@@ -9,11 +9,18 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.Spinner;
 
-public class StudentScheduler extends AppCompatActivity implements View.OnClickListener {
+import java.util.ArrayList;
+import java.util.List;
+
+public class StudentScheduler extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener {
 
     Button buttonStudentApptOk;
+    Spinner spinnerReason;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,7 +29,16 @@ public class StudentScheduler extends AppCompatActivity implements View.OnClickL
 
         buttonStudentApptOk = findViewById(R.id.buttonStudentApptOk);
         buttonStudentApptOk.setOnClickListener(this);
+        spinnerReason = findViewById(R.id.spinnerReason);
+        spinnerReason.setOnItemSelectedListener(this);
 
+        List<String> reasonCodes = new ArrayList<String>();
+        reasonCodes.add("School Work");
+        reasonCodes.add("Relationships");
+        reasonCodes.add("Mental Wellness");
+
+        ArrayAdapter dataAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, reasonCodes);
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); spinnerReason.setAdapter(dataAdapter);
     }
 
     @Override
@@ -76,5 +92,17 @@ public class StudentScheduler extends AppCompatActivity implements View.OnClickL
             startActivity(MyAvailabilityIntent);
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+        String reasonSelection = adapterView.getItemAtPosition(i).toString();
+
+        //need to assign Appointment reason variable the value selected
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> adapterView) {
+
     }
 }
