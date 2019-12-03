@@ -23,8 +23,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.Calendar;
 
 public class CounselorAvailability extends AppCompatActivity implements AdapterView.OnItemSelectedListener, View.OnClickListener {
+//test View.OnClickListener AdapterView.OnItemSelectedListener,
 
-    //Creating buttons
     Button ButtonSubmitAvailability;
     CalendarView CalendarAvailability;
     Spinner SpinnerTimeSelection;
@@ -41,10 +41,10 @@ public class CounselorAvailability extends AppCompatActivity implements AdapterV
         ButtonSubmitAvailability = findViewById(R.id.buttonCounselorAvailabilitySubmit);
         CalendarAvailability = findViewById(R.id.calendarView1);
         TextViewDate = findViewById(R.id.textViewDate);
-        //Creating Spinner
-        SpinnerTimeSelection = findViewById(R.id.spinnerTimeSelection);
-        //Create the adapter to link the text to the spiinner
-         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.TimeOptions, android.R.layout.simple_spinner_item);
+
+      SpinnerTimeSelection = findViewById(R.id.spinnerTimeSelection);
+
+      ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.TimeOptions, android.R.layout.simple_spinner_item);
         // Specify the layout to use when the list of choices appears
               adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         // Apply the adapter to the spinner
@@ -55,9 +55,8 @@ public class CounselorAvailability extends AppCompatActivity implements AdapterV
         CalendarAvailability.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView calendarView, int i, int i1, int i2) {
-                //Grabbing the month, day and year and converting them to string. Adding 1 to month to convert Jan from 0 to 1
                  String date = (i1+1) + "/" + i2 + "/" + i;
-  //              display date below Cal
+  //              Toast.makeText(CounselorAvailability.this, date , Toast.LENGTH_SHORT).show();
                 TextViewDate.setText(date);
             }
         });
@@ -113,14 +112,14 @@ public class CounselorAvailability extends AppCompatActivity implements AdapterV
     public void onClick(View view) {
 
         if(ButtonSubmitAvailability == view){
+    //      String time = EditTextTime.getSelectedItem().toString();
           String date2 = TextViewDate.getText().toString();
-            //Get current time and date
+
             Calendar calendar = Calendar.getInstance();
             int currentHour = calendar.get(Calendar.HOUR_OF_DAY);
              int currentMinute = calendar.get(Calendar.MINUTE);
-            //get time selection from spinner
             String TimeSelection = SpinnerTimeSelection.getSelectedItem().toString();
-            //Add values to firebase
+
             ClassAppointmentSlots createSlot = new ClassAppointmentSlots(date2 + " " + TimeSelection  ,"", currentHour + ":" + currentMinute,"","","","","");
                      myRef.push().setValue(createSlot);
 
@@ -131,7 +130,8 @@ public class CounselorAvailability extends AppCompatActivity implements AdapterV
 
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-
+        String TimeSelection = SpinnerTimeSelection.getSelectedItem().toString();
+               Toast.makeText(this, TimeSelection, Toast.LENGTH_SHORT).show();
     }
 
     @Override

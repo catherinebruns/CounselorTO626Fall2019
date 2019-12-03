@@ -11,28 +11,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Button;
-import android.widget.Toast;
-
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-
 
 public class RegisterActivity extends AppCompatActivity implements View.OnClickListener{
 
-    private FirebaseAuth mAuth;
+    //creating items for Register Activity page
 
     EditText editRegisterTitle, editRegisterRoomNumber, editRegisterEmail, editRegisterLastName;
-    EditText editRegisterFirstName, editRegisterPassword;
+    EditText editRegisterFirstName;
     Button buttonRegisterSubmit;
-
-    //FirebaseDatabase database = FirebaseDatabase.getInstance();
-    //DatabaseReference myRef = database.getReference("CounselorID");
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,9 +33,6 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     editRegisterLastName = findViewById(R.id.editRegisterLastName);
     editRegisterRoomNumber = findViewById(R.id.editRegisterRoomNumber);
     editRegisterTitle = findViewById(R.id.editRegisterTitle);
-    editRegisterPassword = findViewById(R.id.editRegisterPassword);
-
-    mAuth = FirebaseAuth.getInstance();
 
     }
 
@@ -60,13 +43,6 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         //        editRegisterTitle.getText());
 
         //)
-
-
-        if (buttonRegisterSubmit == view) {
-
-            makeNewUsers(editRegisterEmail.getText().toString(), editRegisterPassword.getText().toString());
-
-        }
     }
 
 
@@ -113,44 +89,4 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         }
         return super.onOptionsItemSelected(item);
     }
-
-
-
-    public void makeNewUsers (String email, String password){
-
-        mAuth.createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            //if login is successful
-
-                            Toast.makeText(RegisterActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
-
-                            //creating a new intent to send you back to the main activity once registration is successful
-                            Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
-                            startActivity(intent);
-
-                        } else {
-
-                            //if login is unsuccessful
-
-                            Toast.makeText(RegisterActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-
-
-                        }
-
-                    }
-                });
-
-
-
-    }
-
-    public void loginNewUsers (String email, String password) {
-
-
-    }
-
-
 }

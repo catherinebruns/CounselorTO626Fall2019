@@ -14,6 +14,8 @@ import android.widget.TextView;
 
 public class StudentHome extends AppCompatActivity implements View.OnClickListener {
 
+    //creating items for StudentHome Activity page
+
     Button buttonStudentCheckIn, buttonStudentScheduleAppt;
     TextView textViewStudentWelcome,textViewStudentWelcome2;
 
@@ -44,6 +46,7 @@ public class StudentHome extends AppCompatActivity implements View.OnClickListen
     }
 
     //Inserting Dummy Navigation for Development Stages
+    // Later replaced with Student Menu @Amy
     public boolean onCreateOptionsMenu(Menu menu){
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.dummymenu, menu);

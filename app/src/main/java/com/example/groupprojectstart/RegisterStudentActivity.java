@@ -17,6 +17,8 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class RegisterStudentActivity extends AppCompatActivity implements View.OnClickListener{
 
+    //creating items for Register Student activity page
+
     Button buttonStudentRegisterSubmit;
     EditText editTextStudentFirstName, editTextStudentLastName;
     FirebaseDatabase database = FirebaseDatabase.getInstance();

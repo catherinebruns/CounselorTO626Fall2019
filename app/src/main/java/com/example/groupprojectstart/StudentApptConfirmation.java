@@ -13,6 +13,8 @@ import android.widget.Button;
 
 public class StudentApptConfirmation extends AppCompatActivity implements View.OnClickListener{
 
+    //creating items for StudentAppointConfirmation Activity page
+
     Button buttonStudentApptConfirmationExit;
 
     @Override
@@ -27,6 +29,7 @@ public class StudentApptConfirmation extends AppCompatActivity implements View.O
     }
 
     //Inserting Dummy Navigation for Development Stages
+    // Later replaced with Student Menu @Amy
     public boolean onCreateOptionsMenu(Menu menu){
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.dummymenu, menu);

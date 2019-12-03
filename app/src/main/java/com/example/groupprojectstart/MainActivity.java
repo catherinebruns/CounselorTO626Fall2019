@@ -17,6 +17,8 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
+    //creating items for Main Activity page
+
     //why do we have two separate options for button sign in/up here?
     Button buttonStudentSignIn,buttonStudentSignUp;
     Button buttonCounselorSignIn,buttonCounselorSignUp;
@@ -30,8 +32,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //creating buttons for main activity page
-
         buttonStudentSignIn = findViewById(R.id.buttonStudentSignIn);
         buttonCounselorSignIn = findViewById(R.id.buttonCounselorSignIn);
         buttonStudentSignUp = findViewById(R.id.buttonStudentSignUp);
@@ -44,9 +44,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         buttonCounselorSignUp.setOnClickListener(this);
         buttonStudentSignUp.setOnClickListener(this);
 
-
     }
 
+    //Authentification by E-mail and password
     @Override
     protected void onStart() {
         super.onStart();
@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View view) {
-//need to connect these to firebase
+        //Later need to connect these to firebase authentification @Rohan
 
         //Connecting 4 buttons on Main Activity Page to log in or sign up
         if(buttonStudentSignIn == view){
@@ -88,9 +88,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
-
-
-//Inserting Dummy Navigation for Development Stages  <<< Menu is not necessary in main page
+    //Inserting Dummy Navigation for Development Stages  <<< Menu is not necessary in main page
+    // Will be deleted after develoment stages @Amy
     public boolean onCreateOptionsMenu(Menu menu){
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.dummymenu, menu);
@@ -132,7 +131,5 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         return super.onOptionsItemSelected(item);
     }
-
-
 
 }

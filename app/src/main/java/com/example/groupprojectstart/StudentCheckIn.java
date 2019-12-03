@@ -19,6 +19,8 @@ import java.util.Date;
 
 public class StudentCheckIn extends AppCompatActivity implements View.OnClickListener{
 
+    //creating items for Student CheckIn Activity page
+
     Button buttonImGood, buttonImOkay, buttonImSad;
 
     FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -40,6 +42,7 @@ public class StudentCheckIn extends AppCompatActivity implements View.OnClickLis
     }
 
     //Inserting Dummy Navigation for Development Stages
+    // Later replaced with Student Menu @Amy
     public boolean onCreateOptionsMenu(Menu menu){
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.dummymenu, menu);

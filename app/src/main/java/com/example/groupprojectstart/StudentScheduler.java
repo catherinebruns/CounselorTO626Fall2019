@@ -19,6 +19,8 @@ import java.util.List;
 
 public class StudentScheduler extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener {
 
+    //creating items for StudentScheduler activity page
+
     Button buttonStudentApptOk;
     Spinner spinnerReason;
 
@@ -51,6 +53,7 @@ public class StudentScheduler extends AppCompatActivity implements View.OnClickL
     }
 
     //Inserting Dummy Navigation for Development Stages
+    // Later replaced with Student Menu @Amy
     public boolean onCreateOptionsMenu(Menu menu){
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.dummymenu, menu);
