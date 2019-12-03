@@ -11,16 +11,28 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class RegisterStudentActivity extends AppCompatActivity implements View.OnClickListener{
 
+    private FirebaseAuth mAuth;
+
     Button buttonStudentRegisterSubmit;
-    EditText editTextStudentFirstName, editTextStudentLastName;
-    FirebaseDatabase database = FirebaseDatabase.getInstance();
-    DatabaseReference myref = database.getReference("StudentID");
+    EditText editStudentRegisterFirstName, editStudentRegisterLastName;
+    EditText editStudentRegisterPassword, editStudentRegisterEmail;
+
+
+    //FirebaseDatabase database = FirebaseDatabase.getInstance();
+    //DatabaseReference myref = database.getReference("StudentID");
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,8 +40,10 @@ public class RegisterStudentActivity extends AppCompatActivity implements View.O
         setContentView(R.layout.activity_register_student);
 
         buttonStudentRegisterSubmit = findViewById(R.id.buttonRegisterSubmit);
-        editTextStudentFirstName = findViewById(R.id.editRegisterFirstName);
-        editTextStudentLastName = findViewById(R.id.editRegisterLastName);
+        editStudentRegisterFirstName = findViewById(R.id.editRegisterFirstName);
+        editStudentRegisterLastName = findViewById(R.id.editRegisterLastName);
+        editStudentRegisterPassword = findViewById(R.id.editRegisterPassword);
+        editStudentRegisterEmail = findViewById(R.id.editStudentRegisterEmail);
 
         buttonStudentRegisterSubmit.setOnClickListener(this);
 
@@ -38,6 +52,11 @@ public class RegisterStudentActivity extends AppCompatActivity implements View.O
     @Override
     public void onClick(View view) {
         //        validate(editTextStudentFirstName.getText(), editTextStudentLastName.getText());
+
+        if (buttonStudentRegisterSubmit == view) {
+
+            makeNewUsers(editStudentRegisterEmail.getText().toString(), editStudentRegisterPassword.getText().toString());
+
     }
 
 
@@ -49,7 +68,8 @@ public class RegisterStudentActivity extends AppCompatActivity implements View.O
     }
 
     @Override
-    public  boolean onOptionsItemSelected(@NonNull MenuItem item) {
+    public  boolean onOptionsItemSelected(@NonNull MenuItem MenuItem item;
+        item) {
         if (item.getItemId() == R.id.CounselorAvailability) {
             Intent HomeIntent = new Intent(this, CounselorAvailability.class);
             startActivity(HomeIntent);
@@ -84,4 +104,33 @@ public class RegisterStudentActivity extends AppCompatActivity implements View.O
         }
         return super.onOptionsItemSelected(item);
     }
+
+        public void makeNewUsers  (String email, String password) {
+
+            mAuth.createUserWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()) {
+                                //if login is successful
+
+                                Toast.makeText(RegisterActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
+
+                                //creating a new intent to send you back to the main activity once registration is successful
+                                Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
+                                startActivity(intent);
+
+                            } else {
+
+                                //if login is unsuccessful
+
+                                Toast.makeText(RegisterActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+
+
+                            }
+
+                        }
+
+                        public void loginNewUsers (String email, String password)
+                        }
 }
