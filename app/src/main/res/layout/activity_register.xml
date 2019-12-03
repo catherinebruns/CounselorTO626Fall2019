@@ -75,4 +75,13 @@
         android:text="Submit"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editRegisterRoomNumber" />
+
+    <EditText
+        android:id="@+id/editRegisterPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPassword"
+        tools:layout_editor_absoluteX="55dp"
+        tools:layout_editor_absoluteY="45dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
