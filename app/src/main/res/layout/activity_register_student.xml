@@ -14,8 +14,8 @@
         android:layout_marginStart="99dp"
         android:layout_marginTop="25dp"
         android:ems="10"
+        android:hint="Email Address"
         android:inputType="textPersonName"
-        android:text="Email Address"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editStudentRegisterLastName" />
 
@@ -26,8 +26,8 @@
         android:layout_marginStart="99dp"
         android:layout_marginTop="24dp"
         android:ems="10"
+        android:hint="Last Name"
         android:inputType="textPersonName"
-        android:text="Last Name"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editStudentRegisterFirstName" />
 
@@ -38,8 +38,8 @@
         android:layout_marginStart="99dp"
         android:layout_marginTop="204dp"
         android:ems="10"
+        android:hint="First Name"
         android:inputType="textPersonName"
-        android:text="First Name"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -47,9 +47,21 @@
         android:id="@+id/buttonStudentRegisterSubmit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="161dp"
-        android:layout_marginTop="70dp"
+        android:layout_marginStart="160dp"
+        android:layout_marginTop="35dp"
         android:text="Submit"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editStudentRegisterPassword" />
+
+    <EditText
+        android:id="@+id/editStudentRegisterPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="101dp"
+        android:layout_marginTop="14dp"
+        android:ems="10"
+        android:hint="Password"
+        android:inputType="textPassword"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editStudentRegisterEmail" />
 
