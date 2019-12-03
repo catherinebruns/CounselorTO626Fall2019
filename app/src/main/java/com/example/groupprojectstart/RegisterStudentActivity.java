@@ -12,10 +12,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 public class RegisterStudentActivity extends AppCompatActivity implements View.OnClickListener{
 
     Button buttonStudentRegisterSubmit;
     EditText editTextStudentFirstName, editTextStudentLastName;
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
+    DatabaseReference myref = database.getReference("StudentID");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

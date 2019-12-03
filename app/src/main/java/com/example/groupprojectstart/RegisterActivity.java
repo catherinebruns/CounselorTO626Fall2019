@@ -12,11 +12,19 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Button;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+
 public class RegisterActivity extends AppCompatActivity implements View.OnClickListener{
 
     EditText editRegisterTitle, editRegisterRoomNumber, editRegisterEmail, editRegisterLastName;
     EditText editRegisterFirstName;
     Button buttonRegisterSubmit;
+
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
+    DatabaseReference myRef = database.getReference("CounselorID");
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

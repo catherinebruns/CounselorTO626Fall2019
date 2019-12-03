@@ -34,7 +34,6 @@ public class CounselorAvailability extends AppCompatActivity implements View.OnC
     DatabaseReference myRef = database.getReference("Slots");
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState)  {
         super.onCreate(savedInstanceState);
