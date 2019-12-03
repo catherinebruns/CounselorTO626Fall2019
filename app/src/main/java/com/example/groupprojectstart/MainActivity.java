@@ -47,15 +47,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
+   // @Override
+    //protected void onStart() {
+       // super.onStart();
         //if the person is logged in, then do whatever is in this if statement; for example, skip
         // log in page all together
-        if(currentUser =! null) {
+       // if(currentUser =! null) {
 
-        }
-    }
+      //  }
+   // }
 
     @Override
     public void onClick(View view) {
