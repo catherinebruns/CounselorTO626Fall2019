@@ -11,19 +11,27 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Button;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 
 public class RegisterActivity extends AppCompatActivity implements View.OnClickListener{
 
+    private FirebaseAuth mAuth;
+
     EditText editRegisterTitle, editRegisterRoomNumber, editRegisterEmail, editRegisterLastName;
-    EditText editRegisterFirstName;
+    EditText editRegisterFirstName, editRegisterPassword;
     Button buttonRegisterSubmit;
 
-    FirebaseDatabase database = FirebaseDatabase.getInstance();
-    DatabaseReference myRef = database.getReference("CounselorID");
+    //FirebaseDatabase database = FirebaseDatabase.getInstance();
+    //DatabaseReference myRef = database.getReference("CounselorID");
 
 
     @Override
@@ -39,6 +47,9 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     editRegisterLastName = findViewById(R.id.editRegisterLastName);
     editRegisterRoomNumber = findViewById(R.id.editRegisterRoomNumber);
     editRegisterTitle = findViewById(R.id.editRegisterTitle);
+    editRegisterPassword = findViewById(R.id.editRegisterPassword);
+
+    mAuth = FirebaseAuth.getInstance();
 
     }
 
@@ -49,6 +60,13 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         //        editRegisterTitle.getText());
 
         //)
+
+
+        if (buttonRegisterSubmit == view) {
+
+            makeNewUsers(editRegisterEmail.getText().toString(), editRegisterPassword.getText().toString());
+
+        }
     }
 
 
@@ -95,4 +113,40 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         }
         return super.onOptionsItemSelected(item);
     }
+
+
+
+    public void makeNewUsers (String email, String password){
+
+        mAuth.createUserWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            //if login is successful
+
+                            Toast.makeText(RegisterActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
+
+                        } else {
+
+                            //if login is unsuccessful
+
+                            Toast.makeText(RegisterActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+
+
+                        }
+
+                    }
+                });
+
+
+
+    }
+
+    public void loginNewUsers (String email, String password) {
+
+
+    }
+
+
 }
