@@ -24,10 +24,6 @@ public class ClassStudentCounselorAssignments  {
         this.StartDate = startDate;
         this.EndDate = endDate;
     }
-
-
-
-
 }
 
 

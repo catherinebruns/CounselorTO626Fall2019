@@ -12,6 +12,5 @@ public class ClassCounselorUser {
         this.counselorLastName = LastName;
         this.counselorEmail = Email;
     }
-
 }
 

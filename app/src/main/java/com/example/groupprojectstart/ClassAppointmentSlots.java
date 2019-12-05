@@ -30,9 +30,4 @@ public class ClassAppointmentSlots {
         AppointmentCounselorUserID = appointmentCounselorUserID;
         AppointmentReason = appointmentReason;
     }
-
-
-
-
-
 }

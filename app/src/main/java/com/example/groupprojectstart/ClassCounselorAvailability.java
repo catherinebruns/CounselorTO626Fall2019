@@ -26,7 +26,6 @@ public class ClassCounselorAvailability extends RecyclerView.Adapter<ClassCounse
         this.mContext = mContext;
     }
 
-
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -34,7 +33,6 @@ public class ClassCounselorAvailability extends RecyclerView.Adapter<ClassCounse
         ViewHolder viewHolder = new ViewHolder(view);
         return viewHolder;
     }
-
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
