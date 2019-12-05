@@ -19,6 +19,9 @@ import java.util.List;
 
 public class StudentScheduler extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener {
 
+    private ArrayList<ClassAppointmentAvailability> availabilities;
+
+
     //creating items for StudentScheduler activity page
 
     Button buttonStudentApptOk;
