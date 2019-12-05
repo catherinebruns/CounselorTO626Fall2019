@@ -20,7 +20,6 @@ import java.util.List;
 public class StudentScheduler extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener {
 
     //creating items for StudentScheduler activity page
-
     Button buttonStudentApptOk;
     Spinner spinnerReason;
 
@@ -43,8 +42,8 @@ public class StudentScheduler extends AppCompatActivity implements View.OnClickL
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); spinnerReason.setAdapter(dataAdapter);
     }
 
-    @Override
     //Connecting button navigation for OK button
+    @Override
     public void onClick(View view) {
         if (buttonStudentApptOk == view){
             Intent StudentApptOkIntent = new Intent(this, StudentApptConfirmation.class);
@@ -52,8 +51,19 @@ public class StudentScheduler extends AppCompatActivity implements View.OnClickL
         }
     }
 
-    //Inserting Dummy Navigation for Development Stages
-    // Later replaced with Student Menu @Amy
+    @Override
+    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+        String reasonSelection = adapterView.getItemAtPosition(i).toString();
+
+        //need to assign Appointment reason variable the value selected
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> adapterView) {
+
+    }
+
+    //Inserting Dummy Navigation for Development Stages >>> replaces with counselor menu
     public boolean onCreateOptionsMenu(Menu menu){
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.dummymenu, menu);
@@ -103,17 +113,5 @@ public class StudentScheduler extends AppCompatActivity implements View.OnClickL
             startActivity(RegisterStudentIntent);
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-        String reasonSelection = adapterView.getItemAtPosition(i).toString();
-
-        //need to assign Appointment reason variable the value selected
-    }
-
-    @Override
-    public void onNothingSelected(AdapterView<?> adapterView) {
-
     }
 }

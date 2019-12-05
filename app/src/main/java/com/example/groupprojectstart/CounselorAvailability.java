@@ -23,16 +23,21 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.Calendar;
 
 public class CounselorAvailability extends AppCompatActivity implements AdapterView.OnItemSelectedListener, View.OnClickListener {
-//test View.OnClickListener AdapterView.OnItemSelectedListener,
 
+
+    //test View.OnClickListener AdapterView.OnItemSelectedListener,
+
+    //creating items for CounselorAvailability activity page
     Button ButtonSubmitAvailability;
     CalendarView CalendarAvailability;
     Spinner SpinnerTimeSelection;
     TextView TextViewDate;
+
+    //Firebase database
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference myRef = database.getReference("Slots");
 
-
+    //showing the calendor and time
     @Override
     protected void onCreate(Bundle savedInstanceState)  {
         super.onCreate(savedInstanceState);
@@ -62,15 +67,43 @@ public class CounselorAvailability extends AppCompatActivity implements AdapterV
         });
     }
 
+    //submitting sounselor's available day
+    @Override
+    public void onClick(View view) {
 
+        if(ButtonSubmitAvailability == view){
+    //      String time = EditTextTime.getSelectedItem().toString();
+          String date2 = TextViewDate.getText().toString();
 
-    //Inserting Dummy Navigation for Development Stages
+            Calendar calendar = Calendar.getInstance();
+            int currentHour = calendar.get(Calendar.HOUR_OF_DAY);
+             int currentMinute = calendar.get(Calendar.MINUTE);
+            String TimeSelection = SpinnerTimeSelection.getSelectedItem().toString();
+
+            ClassAppointmentSlots createSlot = new ClassAppointmentSlots(date2 + " " + TimeSelection  ,"", currentHour + ":" + currentMinute,"","","","","");
+                     myRef.push().setValue(createSlot);
+
+            Toast.makeText(this,"Added to firebase :" + date2  , Toast.LENGTH_SHORT).show();
+
+        }}
+
+    //selecting spinner of time
+    @Override
+    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+        String TimeSelection = SpinnerTimeSelection.getSelectedItem().toString();
+               Toast.makeText(this, TimeSelection, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> adapterView) {
+    }
+
+    //Inserting Dummy Navigation for Development Stages >>> replaces with counselor menu by Amy
     public boolean onCreateOptionsMenu(Menu menu){
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.dummymenu, menu);
         return  super.onCreateOptionsMenu(menu);
     }
-
     @Override
     public  boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.CounselorAvailability) {
@@ -115,36 +148,4 @@ public class CounselorAvailability extends AppCompatActivity implements AdapterV
         }
         return super.onOptionsItemSelected(item);
     }
-
-    @Override
-    public void onClick(View view) {
-
-        if(ButtonSubmitAvailability == view){
-    //      String time = EditTextTime.getSelectedItem().toString();
-          String date2 = TextViewDate.getText().toString();
-
-            Calendar calendar = Calendar.getInstance();
-            int currentHour = calendar.get(Calendar.HOUR_OF_DAY);
-             int currentMinute = calendar.get(Calendar.MINUTE);
-            String TimeSelection = SpinnerTimeSelection.getSelectedItem().toString();
-
-            ClassAppointmentSlots createSlot = new ClassAppointmentSlots(date2 + " " + TimeSelection  ,"", currentHour + ":" + currentMinute,"","","","","");
-                     myRef.push().setValue(createSlot);
-
-            Toast.makeText(this,"Added to firebase :" + date2  , Toast.LENGTH_SHORT).show();
-
-        }}
-
-
-    @Override
-    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-        String TimeSelection = SpinnerTimeSelection.getSelectedItem().toString();
-               Toast.makeText(this, TimeSelection, Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    public void onNothingSelected(AdapterView<?> adapterView) {
-    }
-
-
 }

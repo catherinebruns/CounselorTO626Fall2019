@@ -14,7 +14,6 @@ import android.widget.Button;
 public class StudentApptConfirmation extends AppCompatActivity implements View.OnClickListener{
 
     //creating items for StudentAppointConfirmation Activity page
-
     Button buttonStudentApptConfirmationExit;
 
     @Override
@@ -28,8 +27,17 @@ public class StudentApptConfirmation extends AppCompatActivity implements View.O
 
     }
 
-    //Inserting Dummy Navigation for Development Stages
-    // Later replaced with Student Menu @Amy
+    //Going back to home page <<< Is it necessary? we will have student menu
+    @Override
+    public void onClick(View view) {
+        if (buttonStudentApptConfirmationExit == view);
+        //linking this back to the Student home page
+        Intent StudentApptConfirmationExitIntent = new Intent(this, StudentHome.class);
+        startActivity(StudentApptConfirmationExitIntent);
+
+    }
+
+    //Inserting Dummy Navigation for Development Stages >>> replaces with counselor menu
     public boolean onCreateOptionsMenu(Menu menu){
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.dummymenu, menu);
@@ -81,14 +89,4 @@ public class StudentApptConfirmation extends AppCompatActivity implements View.O
         return super.onOptionsItemSelected(item);
     }
 
-
-
-    @Override
-    public void onClick(View view) {
-        if (buttonStudentApptConfirmationExit == view);
-        //linking this back to the Student home page
-        Intent StudentApptConfirmationExitIntent = new Intent(this, StudentHome.class);
-        startActivity(StudentApptConfirmationExitIntent);
-
-    }
 }

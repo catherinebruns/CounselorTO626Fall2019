@@ -15,7 +15,7 @@
         android:layout_marginTop="40dp"
         android:layout_marginEnd="34dp"
         android:layout_marginBottom="33dp"
-        android:text="Couseror Register Page"
+        android:text="Student Register Page"
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/textViewMessage2"
         app:layout_constraintEnd_toEndOf="parent"

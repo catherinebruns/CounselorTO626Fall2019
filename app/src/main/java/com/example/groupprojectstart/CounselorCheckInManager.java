@@ -12,21 +12,23 @@ import android.view.View;
 
 public class CounselorCheckInManager extends AppCompatActivity implements View.OnClickListener{
 
-    //Hello Moto
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_counselor_check_in_manager);
     }
 
-    //Inserting Dummy Navigation for Development Stages
+    @Override
+    public void onClick(View view) {
+
+    }
+
+    //Inserting Dummy Navigation for Development Stages >>> replaces with counselor menu by Catherine
     public boolean onCreateOptionsMenu(Menu menu){
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.dummymenu, menu);
         return  super.onCreateOptionsMenu(menu);
     }
-
     @Override
     public  boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.CounselorAvailability) {
@@ -70,10 +72,5 @@ public class CounselorCheckInManager extends AppCompatActivity implements View.O
             startActivity(RegisterStudentIntent);
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    public void onClick(View view) {
-
     }
 }

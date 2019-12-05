@@ -15,7 +15,7 @@ import android.widget.TextView;
 public class StudentHome extends AppCompatActivity implements View.OnClickListener {
 
     //creating items for StudentHome Activity page
-
+    //student's name will be showed in textViswStudentWelcome2
     Button buttonStudentCheckIn, buttonStudentScheduleAppt;
     TextView textViewStudentWelcome,textViewStudentWelcome2;
 
@@ -32,7 +32,7 @@ public class StudentHome extends AppCompatActivity implements View.OnClickListen
 
     }
 
-
+    //moving to studentCheckin or studentSchedule Appointment
     @Override
     public void onClick(View view) {
         if (buttonStudentCheckIn == view){
@@ -45,14 +45,12 @@ public class StudentHome extends AppCompatActivity implements View.OnClickListen
         }
     }
 
-    //Inserting Dummy Navigation for Development Stages
-    // Later replaced with Student Menu @Amy
+    //Inserting Dummy Navigation for Development Stages >>> replaces with counselor menu
     public boolean onCreateOptionsMenu(Menu menu){
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.dummymenu, menu);
         return  super.onCreateOptionsMenu(menu);
     }
-
     @Override
     public  boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.CounselorAvailability) {

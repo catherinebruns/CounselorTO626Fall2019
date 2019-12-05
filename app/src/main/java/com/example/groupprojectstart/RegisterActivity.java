@@ -24,15 +24,14 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class RegisterActivity extends AppCompatActivity implements View.OnClickListener{
 
-    private FirebaseAuth mAuth;
-
+    //creating items for Register Activity page
     EditText editRegisterTitle, editRegisterRoomNumber, editRegisterEmail, editRegisterLastName;
     EditText editRegisterFirstName, editRegisterPassword;
     Button buttonRegisterSubmit;
 
+    private FirebaseAuth mAuth;
     //FirebaseDatabase database = FirebaseDatabase.getInstance();
     //DatabaseReference myRef = database.getReference("CounselorID");
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,51 +52,44 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
     }
 
+    //Register function of Counselor
+    //This page doesn't work, Need to be fixed.
+    //Title should be chose from pull down if possible???
     @Override
     public void onClick(View view) {
         //validate(editRegisterEmail.getText(), editRegisterFirstName.getText(),
         //        editRegisterLastName.getText(), editRegisterRoomNumber.getText(),
         //        editRegisterTitle.getText());
 
-        //)
-
-
+        //Registration function of student @Rohan
         mAuth.createUserWithEmailAndPassword(editRegisterEmail.getText().toString(), editRegisterPassword.getText().toString())
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             //if login is successful
-
                             Toast.makeText(RegisterActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
-
                             //creating a new intent to send you back to the main activity once registration is successful
                             Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
                             startActivity(intent);
 
                         } else {
-
                             //if login is unsuccessful
-
                             Toast.makeText(RegisterActivity.this, "Failed", Toast.LENGTH_SHORT).show();
-
 
                         }
 
                     }
                 });
 
-
     }
 
-
-    //Inserting Dummy Navigation for Development Stages
+    //Inserting Dummy Navigation for Development Stages >>>> will be removed from this page later
     public boolean onCreateOptionsMenu(Menu menu){
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.dummymenu, menu);
         return  super.onCreateOptionsMenu(menu);
     }
-
     @Override
     public  boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.CounselorAvailability) {
@@ -142,12 +134,4 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         }
         return super.onOptionsItemSelected(item);
     }
-
-
-
-
-
-
-
-
 }

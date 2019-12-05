@@ -18,11 +18,11 @@ import com.google.firebase.auth.FirebaseUser;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     //why do we have two separate options for button sign in/up here?
+    //creating items for Main Activity page
     Button buttonStudentSignIn,buttonStudentSignUp;
     Button buttonCounselorSignIn,buttonCounselorSignUp;
     EditText editTextUsername, editTextPassword;
 
-    //allows user to log in us
     public FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
 
     @Override
@@ -43,8 +43,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         buttonCounselorSignIn.setOnClickListener(this);
         buttonCounselorSignUp.setOnClickListener(this);
         buttonStudentSignUp.setOnClickListener(this);
-
-
     }
 
    // @Override
@@ -53,18 +51,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //if the person is logged in, then do whatever is in this if statement; for example, skip
         // log in page all together
        // if(currentUser =! null) {
-
       //  }
    // }
 
+    //This page doesn't work, Need to be fixed.
     @Override
     public void onClick(View view) {
-//need to connect these to firebase
 
-        //Connecting 4 buttons on Main Activity Page to log in or sign up
+        //Connecting 4 buttons on Main Activity Page to log in or sign up @
         if(buttonStudentSignIn == view){
             Intent StudentSignInIntent = new Intent(this,StudentHome.class);
             startActivity(StudentSignInIntent);
+
+            //showing brank error message
+            if (editTextUsername.getText().toString().trim().equalsIgnoreCase("")) {
+                editTextUsername.setError("This field can not be blank");
+            }
+            if (editTextPassword.getText().toString().trim().equalsIgnoreCase("")) {
+                editTextPassword.setError("This field can not be blank");
+            }
 
         }else if(buttonStudentSignUp == view) {
             Intent StudentSignUpIntent = new Intent(this, RegisterStudentActivity.class);
@@ -74,29 +79,28 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Intent CounselorSignInIntent = new Intent(this, CounselorHome.class);
             startActivity(CounselorSignInIntent);
 
+            //showing brank error message
+            if (editTextUsername.getText().toString().trim().equalsIgnoreCase("")) {
+                editTextUsername.setError("This field can not be blank");
+            }
+
+            if (editTextPassword.getText().toString().trim().equalsIgnoreCase("")) {
+                editTextPassword.setError("This field can not be blank");
+            }
+
         }else if(buttonCounselorSignUp == view) {
             Intent CounselorSignUpIntent = new Intent(this, RegisterActivity.class);
             startActivity(CounselorSignUpIntent);
         }
-        if (editTextUsername.getText().toString().trim().equalsIgnoreCase("")) {
-            editTextUsername.setError("This field can not be blank");
-        }
-
-        if (editTextPassword.getText().toString().trim().equalsIgnoreCase("")) {
-            editTextPassword.setError("This field can not be blank");
-        }
 
     }
 
-
-
-//Inserting Dummy Navigation for Development Stages  <<< Menu is not necessary in main page
+    //Inserting Dummy Navigation for Development Stages  <<< Menu is not necessary in main page
     public boolean onCreateOptionsMenu(Menu menu){
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.dummymenu, menu);
         return  super.onCreateOptionsMenu(menu);
     }
-    @Override
     public  boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.CounselorAvailability) {
             Intent HomeIntent = new Intent(this, CounselorAvailability.class);
@@ -140,7 +144,4 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         return super.onOptionsItemSelected(item);
     }
-
-
-
 }

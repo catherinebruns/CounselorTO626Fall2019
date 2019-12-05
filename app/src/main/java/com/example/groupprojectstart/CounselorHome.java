@@ -13,7 +13,11 @@ import android.widget.TextView;
 
 public class CounselorHome extends AppCompatActivity implements View.OnClickListener{
 
+    //creating items for CounselorAvailability activity page
+    //Couselor's name will be showed in textViswCounselorWelcome2
     TextView textViewCounselorWelcome,textViewCounselorWelcome2;
+
+    //showing the appointment schedule and the number of response
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,13 +25,17 @@ public class CounselorHome extends AppCompatActivity implements View.OnClickList
         setContentView(R.layout.activity_counselor_home);
     }
 
-    //Inserting Dummy Navigation for Development Stages
+    @Override
+    public void onClick(View view) {
+
+    }
+
+    //Inserting Dummy Navigation for Development Stages >>> replaces with counselor menu by Amy
     public boolean onCreateOptionsMenu(Menu menu){
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.dummymenu, menu);
         return  super.onCreateOptionsMenu(menu);
     }
-
     @Override
     public  boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.CounselorAvailability) {
@@ -63,12 +71,6 @@ public class CounselorHome extends AppCompatActivity implements View.OnClickList
             startActivity(MyAvailabilityIntent);
         }
         return super.onOptionsItemSelected(item);
-    }
-
-
-    @Override
-    public void onClick(View view) {
-
     }
 }
 

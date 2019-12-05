@@ -41,14 +41,38 @@ public class StudentCheckIn extends AppCompatActivity implements View.OnClickLis
 
     }
 
-    //Inserting Dummy Navigation for Development Stages
-    // Later replaced with Student Menu @Amy
+    // Adding the student feedback >>> will be showed in Counselor home Activity
+    @Override
+    public void onClick(View view) {
+        //Defining the variable which will be added to firebase
+        String CheckInButton = "";
+
+        if (buttonImGood == view){
+            CheckInButton = "ImGood";
+        }
+        else if (buttonImOkay == view){
+            CheckInButton = "ImOkay";
+
+        }
+        else if (buttonImSad == view) {
+            CheckInButton = "ImSad";
+            //have students create an appointment
+            Intent ImSadIntent = new Intent(this, StudentScheduler.class);
+            startActivity(ImSadIntent);
+        }
+        //Adding the firebase data on the checkin
+        ClassCheckIn createcheckinResponse = new ClassCheckIn("","teststudent",CheckInButton,"time1","time2");
+        myRef.push().setValue(createcheckinResponse);
+        Toast.makeText(this, "success", Toast.LENGTH_SHORT).show();
+
+    }
+
+    //Inserting Dummy Navigation for Development Stages >>> replaces with counselor menu
     public boolean onCreateOptionsMenu(Menu menu){
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.dummymenu, menu);
         return  super.onCreateOptionsMenu(menu);
     }
-
     @Override
     public  boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.CounselorAvailability) {
@@ -94,28 +118,4 @@ public class StudentCheckIn extends AppCompatActivity implements View.OnClickLis
         return super.onOptionsItemSelected(item);
     }
 
-    @Override
-    public void onClick(View view) {
-        //Defining the variable which will be added to firebase
-        String CheckInButton = "";
-
-        if (buttonImGood == view){
-        CheckInButton = "ImGood";
-        }
-        else if (buttonImOkay == view){
-         CheckInButton = "ImOkay";
-
-        }
-        else if (buttonImSad == view) {
-           CheckInButton = "ImSad";
-            //have students create an appointment
-            Intent ImSadIntent = new Intent(this, StudentScheduler.class);
-            startActivity(ImSadIntent);
-        }
-        //Adding the firebase data on the checkin
-        ClassCheckIn createcheckinResponse = new ClassCheckIn("","teststudent",CheckInButton,"time1","time2");
-        myRef.push().setValue(createcheckinResponse);
-        Toast.makeText(this, "success", Toast.LENGTH_SHORT).show();
-
-    }
 }

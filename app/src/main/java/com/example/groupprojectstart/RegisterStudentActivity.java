@@ -22,16 +22,14 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class RegisterStudentActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private FirebaseAuth mAuth;
-
+    //creating items for RegisterStudent Activity page
     Button buttonStudentRegisterSubmit;
     EditText editStudentRegisterFirstName, editStudentRegisterLastName;
     EditText editStudentRegisterPassword, editStudentRegisterEmail;
 
-
+    private FirebaseAuth mAuth;
     //FirebaseDatabase database = FirebaseDatabase.getInstance();
     //DatabaseReference myref = database.getReference("StudentID");
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,14 +46,13 @@ public class RegisterStudentActivity extends AppCompatActivity implements View.O
 
     }
 
+    //This page doesn't work, Needed to be fixed!!!!!!!!!.
+    //Registration function of student
     @Override
     public void onClick(View view) {
         //validate(editRegisterEmail.getText(), editRegisterFirstName.getText(),
         //        editRegisterLastName.getText(), editRegisterRoomNumber.getText(),
         //        editRegisterTitle.getText());
-
-        //)
-
 
         mAuth.createUserWithEmailAndPassword(editStudentRegisterEmail.getText().toString(), editStudentRegisterPassword.getText().toString())
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -71,25 +68,20 @@ public class RegisterStudentActivity extends AppCompatActivity implements View.O
                             startActivity(intent);
 
                         } else {
-
                             //if login is unsuccessful
-
                             Toast.makeText(RegisterStudentActivity.this, "Failed", Toast.LENGTH_SHORT).show();
-
-
                         }
 
                     }
                 });
     }
 
-    //Inserting Dummy Navigation for Development Stages
+    //Inserting Dummy Navigation for Development Stages >>>> will be removed from this page later
     public boolean onCreateOptionsMenu(Menu menu){
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.dummymenu, menu);
         return  super.onCreateOptionsMenu(menu);
     }
-
     @Override
     public  boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.CounselorAvailability) {
