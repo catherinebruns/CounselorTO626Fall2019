@@ -17,6 +17,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -67,11 +69,16 @@ public class CounselorAvailability extends AppCompatActivity implements AdapterV
         });
     }
 
-    //submitting sounselor's available day
+    //submitting counselor's available day
     @Override
     public void onClick(View view) {
 
         if(ButtonSubmitAvailability == view){
+
+
+       //     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+         //   String email = user.getEmail();
+
     //      String time = EditTextTime.getSelectedItem().toString();
           String date2 = TextViewDate.getText().toString();
 
@@ -83,7 +90,8 @@ public class CounselorAvailability extends AppCompatActivity implements AdapterV
             ClassAppointmentSlots createSlot = new ClassAppointmentSlots(date2 + " " + TimeSelection  ,"", currentHour + ":" + currentMinute,"","","","","");
                      myRef.push().setValue(createSlot);
 
-            Toast.makeText(this,"Added to firebase :" + date2  , Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,"Added to firebase :" + date2, Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this,"Added to firebase :" + date2+  " for "+email, Toast.LENGTH_SHORT).show();
 
         }}
 

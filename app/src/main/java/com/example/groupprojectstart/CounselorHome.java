@@ -10,19 +10,38 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class CounselorHome extends AppCompatActivity implements View.OnClickListener{
 
     //creating items for CounselorAvailability activity page
     //Couselor's name will be showed in textViswCounselorWelcome2
     TextView textViewCounselorWelcome,textViewCounselorWelcome2;
+    private FirebaseAuth mAuth;
 
     //showing the appointment schedule and the number of response
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_counselor_home);
+
+        mAuth = FirebaseAuth.getInstance();
+
+          FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        String email = "empty";
+       // String email = user.getEmail();
+       // if(email.isEmpty()){
+        //     email = "empty";
+      // }
+
+        Toast.makeText(this, email, Toast.LENGTH_SHORT).show();
     }
 
     @Override
