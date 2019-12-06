@@ -48,6 +48,8 @@ public class StudentScheduler extends AppCompatActivity implements View.OnClickL
         spinnerReason = findViewById(R.id.spinnerReason);
         spinnerReason.setOnItemSelectedListener(this);
 
+        recyclerViewCounselorAvailability = findViewById(R.id.recyclerViewCounselorAvailability);
+
         //recyclerview pulling data from firebase
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
         final DatabaseReference myRef = database.getReference("Slots");
@@ -60,6 +62,11 @@ public class StudentScheduler extends AppCompatActivity implements View.OnClickL
                    ClassAppointmentSlots c = postSnapshot.getValue(ClassAppointmentSlots.class);
                    temp.add(c);
                }
+                RecyclerViewAdapter adapter = new RecyclerViewAdapter(temp, StudentScheduler.this); //Linking the adapter to recyclerView,
+                //check out the RecyclerViewAdapter (this is the hard part)
+                recyclerViewCounselorAvailability.setAdapter(adapter);
+                recyclerViewCounselorAvailability.setLayoutManager(new LinearLayoutManager(StudentScheduler.this));
+
 
             }
 
@@ -77,12 +84,7 @@ public class StudentScheduler extends AppCompatActivity implements View.OnClickL
         appointmentSlots.add(new ClassAppointmentSlots ("12/20/2019 8AM-9AM", "a@a.com"));
         appointmentSlots.add(new ClassAppointmentSlots ("12/21/2019 8AM-9AM", "a@a.com"));
         appointmentSlots.add(new ClassAppointmentSlots ("12/22/2019 8AM-9AM", "a@a.com"));
-*/
-        recyclerViewCounselorAvailability = findViewById(R.id.recyclerViewCounselorAvailability); //Link recyclerview variable to xml
-        RecyclerViewAdapter adapter = new RecyclerViewAdapter(appointmentSlots, this); //Linking the adapter to recyclerView,
-        //check out the RecyclerViewAdapter (this is the hard part)
-        recyclerViewCounselorAvailability.setAdapter(adapter);
-        recyclerViewCounselorAvailability.setLayoutManager(new LinearLayoutManager(this)); //Setting the layout manager, commonly used is linear
+*///Setting the layout manager, commonly used is linear
 
 
 
