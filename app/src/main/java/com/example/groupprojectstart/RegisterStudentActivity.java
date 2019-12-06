@@ -27,6 +27,7 @@ public class RegisterStudentActivity extends AppCompatActivity implements View.O
     EditText editStudentRegisterFirstName, editStudentRegisterLastName;
     EditText editStudentRegisterPassword, editStudentRegisterEmail;
 
+    //CEB synced to firebase
     private FirebaseAuth mAuth;
     //FirebaseDatabase database = FirebaseDatabase.getInstance();
     //DatabaseReference myref = database.getReference("StudentID");
@@ -44,9 +45,11 @@ public class RegisterStudentActivity extends AppCompatActivity implements View.O
 
         buttonStudentRegisterSubmit.setOnClickListener(this);
 
+        //CEB Initialized firebase auth
+        mAuth = FirebaseAuth.getInstance();
+
     }
 
-    //This page doesn't work, Needed to be fixed!!!!!!!!!.
     //Registration function of student
     @Override
     public void onClick(View view) {
@@ -54,6 +57,8 @@ public class RegisterStudentActivity extends AppCompatActivity implements View.O
         //        editRegisterLastName.getText(), editRegisterRoomNumber.getText(),
         //        editRegisterTitle.getText());
 
+
+        //need to figure out how to have two separate authentifications
         mAuth.createUserWithEmailAndPassword(editStudentRegisterEmail.getText().toString(), editStudentRegisterPassword.getText().toString())
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override

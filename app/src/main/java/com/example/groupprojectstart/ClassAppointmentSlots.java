@@ -10,20 +10,24 @@ public class ClassAppointmentSlots {
  //   public Date AppointmentEnd = new Date();
 
    public String AppointmentStart;
-    public String AppointmentEnd;
     public String AppointmentStatus;
     public String AppointmentStudentUserID;
     public String AppointmentCounselorUserID;
     public String AppointmentReason;
     public Date AppointmentCreationTimestamp =  new Date();
 
+
     public ClassAppointmentSlots() {
     }
 
-    public ClassAppointmentSlots(String appointmentStart, String appointmentEnd, String AppointmentCreationTimestamp, String appointmentID, String appointmentStatus, String appointmentStudentUserID,
+    public ClassAppointmentSlots(String AppointmentCounselorUserID, String AppointmentStart){
+        this.AppointmentCounselorUserID = AppointmentCounselorUserID;
+        this.AppointmentStart = AppointmentStart;
+    }
+
+    public ClassAppointmentSlots(String appointmentStart, String AppointmentCreationTimestamp, String appointmentID, String appointmentStatus, String appointmentStudentUserID,
                                  String appointmentCounselorUserID, String appointmentReason) {
         AppointmentStart = appointmentStart;
-        AppointmentEnd = appointmentEnd;
         AppointmentID = appointmentID;
         AppointmentStatus = appointmentStatus;
         AppointmentStudentUserID = appointmentStudentUserID;

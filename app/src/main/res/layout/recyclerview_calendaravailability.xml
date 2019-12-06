@@ -5,29 +5,26 @@
     android:layout_height="wrap_content" android:id="@+id/parent_layout" android:padding="5dp">
 
 
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        app:srcCompat="@color/colorPrimary" />
+    <TextView
+        android:id="@+id/textViewApptStart"
+        android:layout_width="171dp"
+        android:layout_height="31dp"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="5dp"
+        android:text="Appointment Start" />
 
     <TextView
-        android:id="@+id/textViewDate"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
-        android:text="TextView"
-        android:layout_toRightOf="@id/imageView"
+        android:id="@+id/textViewCounselorEmail"
+        android:layout_width="150dp"
+        android:layout_height="29dp"
+        android:layout_alignParentEnd="true"
         android:layout_centerVertical="true"
-        android:layout_margin="5dp"/>
+        android:layout_marginEnd="50dp"
+        android:text="Counselor Email" />
 
 
-    <TextView
-        android:id="@+id/textViewTime"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
-        android:text="TextView"
-        android:layout_toRightOf="@id/textViewDate"
-        android:layout_centerVertical="true"
-        android:layout_margin="5dp"/>
 </RelativeLayout>

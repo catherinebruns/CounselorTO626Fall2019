@@ -49,7 +49,7 @@ public class CounselorAvailability extends AppCompatActivity implements AdapterV
 
         ButtonSubmitAvailability = findViewById(R.id.buttonCounselorAvailabilitySubmit);
         CalendarAvailability = findViewById(R.id.calendarView1);
-        TextViewDate = findViewById(R.id.textViewDate);
+        TextViewDate = findViewById(R.id.textViewApptStart);
 
       SpinnerTimeSelection = findViewById(R.id.spinnerTimeSelection);
         mAuth = FirebaseAuth.getInstance();
@@ -90,7 +90,7 @@ public class CounselorAvailability extends AppCompatActivity implements AdapterV
              int currentMinute = calendar.get(Calendar.MINUTE);
             String TimeSelection = SpinnerTimeSelection.getSelectedItem().toString();
 
-            ClassAppointmentSlots createSlot = new ClassAppointmentSlots(date2 + " " + TimeSelection  ,"", currentHour + ":" + currentMinute,"","","",email,"");
+            ClassAppointmentSlots createSlot = new ClassAppointmentSlots(date2 + " " + TimeSelection ,currentHour + ":" + currentMinute,"","","",email,"");
                      myRef.push().setValue(createSlot);
 
     //        Toast.makeText(this,"Added to firebase :" + date2, Toast.LENGTH_SHORT).show();

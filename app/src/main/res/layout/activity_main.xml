@@ -15,6 +15,7 @@
         android:ems="10"
         android:hint="Username(Mail Address)"
         android:inputType="textPersonName"
+        android:text="cabruns@umich.edu"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Welcome" />
 
@@ -39,6 +40,7 @@
         android:ems="10"
         android:hint="Password"
         android:inputType="textPassword"
+        android:text="123456"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextUsername" />
 

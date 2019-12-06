@@ -2,9 +2,11 @@ package com.example.groupprojectstart;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -13,18 +15,28 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.Toast;
 
+import androidx.recyclerview.widget.RecyclerView;
+
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
 public class StudentScheduler extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener {
 
-    private ArrayList<ClassAppointmentAvailability> availabilities;
-
-
+    public ArrayList<ClassAppointmentSlots> appointmentSlots = new ArrayList<>();
     //creating items for StudentScheduler activity page
     Button buttonStudentApptOk;
     Spinner spinnerReason;
+    RecyclerView recyclerViewCounselorAvailability;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +47,45 @@ public class StudentScheduler extends AppCompatActivity implements View.OnClickL
         buttonStudentApptOk.setOnClickListener(this);
         spinnerReason = findViewById(R.id.spinnerReason);
         spinnerReason.setOnItemSelectedListener(this);
+
+        //recyclerview pulling data from firebase
+        final FirebaseDatabase database = FirebaseDatabase.getInstance();
+        final DatabaseReference myRef = database.getReference("Slots");
+
+        myRef.orderByChild("AppointmentStart").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                ArrayList<ClassAppointmentSlots> temp = new ArrayList<>();
+               for(DataSnapshot postSnapshot: dataSnapshot.getChildren()){
+                   ClassAppointmentSlots c = postSnapshot.getValue(ClassAppointmentSlots.class);
+                   temp.add(c);
+               }
+               StudentScheduler.this.appointmentSlots = (ArrayList<ClassAppointmentSlots>)temp.clone();
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+            }
+        });
+        Toast.makeText(StudentScheduler.this, StudentScheduler.this.appointmentSlots.toString(), Toast.LENGTH_LONG).show();
+
+//dummy data for testing recycler view
+        /*appointmentSlots = new ArrayList<ClassAppointmentSlots>();
+        appointmentSlots.add(new ClassAppointmentSlots ("12/17/2019 8AM-9AM", "a@a.com"));
+        appointmentSlots.add(new ClassAppointmentSlots ("12/18/2019 8AM-9AM", "a@a.com"));
+        appointmentSlots.add(new ClassAppointmentSlots ("12/19/2019 8AM-9AM", "a@a.com"));
+        appointmentSlots.add(new ClassAppointmentSlots ("12/20/2019 8AM-9AM", "a@a.com"));
+        appointmentSlots.add(new ClassAppointmentSlots ("12/21/2019 8AM-9AM", "a@a.com"));
+        appointmentSlots.add(new ClassAppointmentSlots ("12/22/2019 8AM-9AM", "a@a.com"));
+*/
+        recyclerViewCounselorAvailability = findViewById(R.id.recyclerViewCounselorAvailability); //Link recyclerview variable to xml
+        RecyclerViewAdapter adapter = new RecyclerViewAdapter(appointmentSlots, this); //Linking the adapter to recyclerView,
+        //check out the RecyclerViewAdapter (this is the hard part)
+        recyclerViewCounselorAvailability.setAdapter(adapter);
+        recyclerViewCounselorAvailability.setLayoutManager(new LinearLayoutManager(this)); //Setting the layout manager, commonly used is linear
+
+
 
         List<String> reasonCodes = new ArrayList<String>();
         reasonCodes.add("School Work");

@@ -61,7 +61,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         //        editRegisterLastName.getText(), editRegisterRoomNumber.getText(),
         //        editRegisterTitle.getText());
 
-        //Registration function of student @Rohan
+        //Registration function of Counselor @Rohan
         mAuth.createUserWithEmailAndPassword(editRegisterEmail.getText().toString(), editRegisterPassword.getText().toString())
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
