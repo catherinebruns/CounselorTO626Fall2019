@@ -35,13 +35,13 @@ public class CounselorHome extends AppCompatActivity implements View.OnClickList
         mAuth = FirebaseAuth.getInstance();
 
           FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        String email = "empty";
+       // String email = "empty";
        // String email = user.getEmail();
        // if(email.isEmpty()){
         //     email = "empty";
       // }
 
-        Toast.makeText(this, email, Toast.LENGTH_SHORT).show();
+      //  Toast.makeText(this, email, Toast.LENGTH_SHORT).show();
     }
 
     @Override

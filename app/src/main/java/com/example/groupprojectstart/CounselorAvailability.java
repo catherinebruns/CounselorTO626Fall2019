@@ -34,12 +34,14 @@ public class CounselorAvailability extends AppCompatActivity implements AdapterV
     CalendarView CalendarAvailability;
     Spinner SpinnerTimeSelection;
     TextView TextViewDate;
+    private FirebaseAuth mAuth;
+
 
     //Firebase database
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference myRef = database.getReference("Slots");
 
-    //showing the calendor and time
+    //showing the calendar and time
     @Override
     protected void onCreate(Bundle savedInstanceState)  {
         super.onCreate(savedInstanceState);
@@ -50,8 +52,10 @@ public class CounselorAvailability extends AppCompatActivity implements AdapterV
         TextViewDate = findViewById(R.id.textViewDate);
 
       SpinnerTimeSelection = findViewById(R.id.spinnerTimeSelection);
+        mAuth = FirebaseAuth.getInstance();
 
-      ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.TimeOptions, android.R.layout.simple_spinner_item);
+
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.TimeOptions, android.R.layout.simple_spinner_item);
         // Specify the layout to use when the list of choices appears
               adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         // Apply the adapter to the spinner
@@ -76,9 +80,8 @@ public class CounselorAvailability extends AppCompatActivity implements AdapterV
         if(ButtonSubmitAvailability == view){
 
 
-       //     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-         //   String email = user.getEmail();
-
+            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+            String email = user.getEmail();
     //      String time = EditTextTime.getSelectedItem().toString();
           String date2 = TextViewDate.getText().toString();
 
@@ -87,11 +90,11 @@ public class CounselorAvailability extends AppCompatActivity implements AdapterV
              int currentMinute = calendar.get(Calendar.MINUTE);
             String TimeSelection = SpinnerTimeSelection.getSelectedItem().toString();
 
-            ClassAppointmentSlots createSlot = new ClassAppointmentSlots(date2 + " " + TimeSelection  ,"", currentHour + ":" + currentMinute,"","","","","");
+            ClassAppointmentSlots createSlot = new ClassAppointmentSlots(date2 + " " + TimeSelection  ,"", currentHour + ":" + currentMinute,"","","",email,"");
                      myRef.push().setValue(createSlot);
 
-            Toast.makeText(this,"Added to firebase :" + date2, Toast.LENGTH_SHORT).show();
-            //Toast.makeText(this,"Added to firebase :" + date2+  " for "+email, Toast.LENGTH_SHORT).show();
+    //        Toast.makeText(this,"Added to firebase :" + date2, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,"Added to firebase :" + date2+  " for "+email, Toast.LENGTH_SHORT).show();
 
         }}
 
