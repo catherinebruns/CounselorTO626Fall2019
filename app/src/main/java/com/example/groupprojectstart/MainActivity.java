@@ -64,13 +64,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View view) {
        final Intent CounselorSignInIntent = new Intent(this, CounselorHome.class);
+       final Intent StudentSignInIntent = new Intent(this,StudentHome.class);
+
         String email = editTextUsername.getText().toString().trim();
         String password = editTextPassword.getText().toString().trim();
 
         //Connecting 4 buttons on Main Activity Page to log in or sign up @
         if(buttonStudentSignIn == view){
-            Intent StudentSignInIntent = new Intent(this,StudentHome.class);
-            startActivity(StudentSignInIntent);
 
             //showing brank error message
             if (editTextUsername.getText().toString().trim().equalsIgnoreCase("")) {
@@ -79,6 +79,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             if (editTextPassword.getText().toString().trim().equalsIgnoreCase("")) {
                 editTextPassword.setError("This field can not be blank");
             }
+            //CEB signing in students
+            mAuth.signInWithEmailAndPassword(email,password)
+                    .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()) {
+                                // Sign in success, update UI with the signed-in user's information
+                                Toast.makeText(MainActivity.this, "sign in success", Toast.LENGTH_SHORT).show();
+                                startActivity(StudentSignInIntent);
+
+                            } else {
+                                // If sign in fails, display a message to the user.
+                                Toast.makeText(MainActivity.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
+
 
         }else if(buttonStudentSignUp == view) {
             Intent StudentSignUpIntent = new Intent(this, RegisterStudentActivity.class);
