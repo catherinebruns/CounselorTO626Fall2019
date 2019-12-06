@@ -60,7 +60,6 @@ public class StudentScheduler extends AppCompatActivity implements View.OnClickL
                    ClassAppointmentSlots c = postSnapshot.getValue(ClassAppointmentSlots.class);
                    temp.add(c);
                }
-               StudentScheduler.this.appointmentSlots = (ArrayList<ClassAppointmentSlots>)temp.clone();
 
             }
 
