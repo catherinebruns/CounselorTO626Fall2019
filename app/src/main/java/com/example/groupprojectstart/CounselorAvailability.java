@@ -36,7 +36,6 @@ public class CounselorAvailability extends AppCompatActivity implements AdapterV
     TextView TextViewDate;
     private FirebaseAuth mAuth;
 
-
     //Firebase database
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference myRef = database.getReference("Slots");
@@ -50,8 +49,8 @@ public class CounselorAvailability extends AppCompatActivity implements AdapterV
         ButtonSubmitAvailability = findViewById(R.id.buttonCounselorAvailabilitySubmit);
         CalendarAvailability = findViewById(R.id.calendarView1);
         TextViewDate = findViewById(R.id.textViewApptStart);
+        SpinnerTimeSelection = findViewById(R.id.spinnerTimeSelection);
 
-      SpinnerTimeSelection = findViewById(R.id.spinnerTimeSelection);
         mAuth = FirebaseAuth.getInstance();
 
 

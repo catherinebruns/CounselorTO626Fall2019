@@ -24,38 +24,78 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="161dp"
+        android:layout_marginTop="20dp"
         android:layout_marginBottom="31dp"
         android:text="Ok!"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerReason" />
 
     <Spinner
         android:id="@+id/spinnerReason"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="149dp"
-        app:layout_constraintBottom_toTopOf="@+id/buttonStudentApptOk"
+        android:layout_height="75dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerDates" />
 
-    <TextView
-        android:id="@+id/reasonHeader"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="270dp"
-        android:layout_marginBottom="28dp"
-        android:text="Topic for discussion"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toTopOf="@+id/spinnerReason"
+    <Spinner
+        android:id="@+id/spinnerDates"
+        android:layout_width="197dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="10dp"
+        android:background="#32FFFFFF"
+        app:layout_constraintEnd_toStartOf="@+id/spinnerTimeSlots"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recyclerViewCounselorAvailability"
+        tools:visibility="visible" />
+
+    <Spinner
+        android:id="@+id/spinnerTimeSlots"
+        android:layout_width="197dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="5dp"
+        android:background="#32FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/spinnerDates"
+        app:layout_constraintTop_toBottomOf="@+id/recyclerViewCounselorAvailability" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewCounselorAvailability"
-        android:layout_width="409dp"
-        android:layout_height="358dp"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="73dp" />
+        android:layout_width="408dp"
+        android:layout_height="115dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="5dp"
+        android:background="#4300BCD4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewMessage1" />
+
+    <TextView
+        android:id="@+id/textViewDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="20dp"
+        android:text="Select the date, time, and reason that works for you"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recyclerViewCounselorAvailability" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="46dp"
+        android:text="Below are available counselor time slots."
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewMessage1" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

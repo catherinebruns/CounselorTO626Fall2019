@@ -20,6 +20,8 @@ import android.widget.Toast;
 import androidx.recyclerview.widget.RecyclerView;
 
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -35,8 +37,13 @@ public class StudentScheduler extends AppCompatActivity implements View.OnClickL
     public ArrayList<ClassAppointmentSlots> appointmentSlots = new ArrayList<>();
     //creating items for StudentScheduler activity page
     Button buttonStudentApptOk;
-    Spinner spinnerReason;
+    Spinner spinnerReason, spinnerDates, spinnerTimeSlots;
     RecyclerView recyclerViewCounselorAvailability;
+
+    private FirebaseAuth mAuth;
+    //Firebase database
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
+    DatabaseReference myRef = database.getReference("Slots");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,16 +51,21 @@ public class StudentScheduler extends AppCompatActivity implements View.OnClickL
         setContentView(R.layout.activity_student_scheduler);
 
         buttonStudentApptOk = findViewById(R.id.buttonStudentApptOk);
-        buttonStudentApptOk.setOnClickListener(this);
         spinnerReason = findViewById(R.id.spinnerReason);
-        spinnerReason.setOnItemSelectedListener(this);
-
+        spinnerDates = findViewById(R.id.spinnerDates);
+        spinnerTimeSlots = findViewById(R.id.spinnerTimeSlots);
         recyclerViewCounselorAvailability = findViewById(R.id.recyclerViewCounselorAvailability);
 
-        //recyclerview pulling data from firebase
-        final FirebaseDatabase database = FirebaseDatabase.getInstance();
-        final DatabaseReference myRef = database.getReference("Slots");
 
+        buttonStudentApptOk.setOnClickListener(this);
+        spinnerDates.setOnItemSelectedListener(this);
+        spinnerReason.setOnItemSelectedListener(this);
+        spinnerTimeSlots.setOnItemSelectedListener(this);
+
+        mAuth = FirebaseAuth.getInstance();
+
+
+        //Pulling data for recyclerview
         myRef.orderByChild("AppointmentStart").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -63,7 +75,6 @@ public class StudentScheduler extends AppCompatActivity implements View.OnClickL
                    temp.add(c);
                }
                 RecyclerViewAdapter adapter = new RecyclerViewAdapter(temp, StudentScheduler.this); //Linking the adapter to recyclerView,
-                //check out the RecyclerViewAdapter (this is the hard part)
                 recyclerViewCounselorAvailability.setAdapter(adapter);
                 recyclerViewCounselorAvailability.setLayoutManager(new LinearLayoutManager(StudentScheduler.this));
             }
@@ -72,7 +83,9 @@ public class StudentScheduler extends AppCompatActivity implements View.OnClickL
             public void onCancelled(@NonNull DatabaseError databaseError) {
             }
         });
+/*
         Toast.makeText(StudentScheduler.this, StudentScheduler.this.appointmentSlots.toString(), Toast.LENGTH_LONG).show();
+*/
 
 //dummy data for testing recycler view
         /*appointmentSlots = new ArrayList<ClassAppointmentSlots>();
@@ -84,27 +97,53 @@ public class StudentScheduler extends AppCompatActivity implements View.OnClickL
         appointmentSlots.add(new ClassAppointmentSlots ("12/22/2019 8AM-9AM", "a@a.com"));
 *///Setting the layout manager, commonly used is linear
 
-        List<String> reasonCodes = new ArrayList<String>();
+       /* List<String> reasonCodes = new ArrayList<String>();
         reasonCodes.add("School Work");
         reasonCodes.add("Relationships");
-        reasonCodes.add("Mental Wellness");
+        reasonCodes.add("Mental Wellness");*/
 
-        ArrayAdapter dataAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, reasonCodes);
-        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); spinnerReason.setAdapter(dataAdapter);
+        /*ArrayAdapter dataAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, reasonCodes);
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); spinnerReason.setAdapter(dataAdapter);*/
+        //^CEB recreated this array in resources file for strings to store with other spinner info
+
+        //setting the spinners to show values
+        ArrayAdapter<CharSequence> dateadapter = ArrayAdapter.createFromResource(this, R.array.DateOptions, android.R.layout.simple_spinner_item);
+        dateadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerDates.setAdapter(dateadapter);
+
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.TimeOptions, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerTimeSlots.setAdapter(adapter);
+
+        ArrayAdapter<CharSequence> reasonadapter = ArrayAdapter.createFromResource(this, R.array.ReasonCodes, android.R.layout.simple_spinner_item);
+        reasonadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerReason.setAdapter(reasonadapter);
     }
 
     //Connecting button navigation for OK button
     @Override
     public void onClick(View view) {
         if (buttonStudentApptOk == view){
+            //sending selections to firebase
+            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+            String email = user.getEmail();
+
+
+            //need to connect to a premade slot
+
+            //to take to appointment confirmation page
             Intent StudentApptOkIntent = new Intent(this, StudentApptConfirmation.class);
             startActivity(StudentApptOkIntent);
         }
     }
 
+
+//for spinner selections
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-        String reasonSelection = adapterView.getItemAtPosition(i).toString();
+        String DateSelection = spinnerDates.getItemAtPosition(i).toString();
+        String TimeSelection = spinnerTimeSlots.getSelectedItem().toString();
+        String ReasonSelection = spinnerReason.getSelectedItem().toString();
 
         //need to assign Appointment reason variable the value selected
     }
