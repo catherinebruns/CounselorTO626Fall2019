@@ -1,6 +1,7 @@
 package com.example.groupprojectstart;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
@@ -22,6 +23,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -39,6 +41,7 @@ public class StudentScheduler extends AppCompatActivity implements View.OnClickL
     Button buttonStudentApptOk;
     Spinner spinnerReason, spinnerDates, spinnerTimeSlots;
     RecyclerView recyclerViewCounselorAvailability;
+    String appointmentChoice, appointmentStatus;
 
     private FirebaseAuth mAuth;
     //Firebase database
@@ -55,6 +58,11 @@ public class StudentScheduler extends AppCompatActivity implements View.OnClickL
         spinnerDates = findViewById(R.id.spinnerDates);
         spinnerTimeSlots = findViewById(R.id.spinnerTimeSlots);
         recyclerViewCounselorAvailability = findViewById(R.id.recyclerViewCounselorAvailability);
+
+
+        //need to make new variable with both appointment date and time in it. set as string above.
+        appointmentChoice = spinnerDates + " " + spinnerTimeSlots;
+        appointmentStatus = "Booked";
 
 
         buttonStudentApptOk.setOnClickListener(this);
@@ -128,15 +136,52 @@ public class StudentScheduler extends AppCompatActivity implements View.OnClickL
             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
             String email = user.getEmail();
 
+            myRef.orderByChild("AppointmentStart").equalTo(appointmentChoice).addChildEventListener(new ChildEventListener() {
 
-            //need to connect to a premade slot
+                @Override
+                public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                  /*  //adding values to the Class Appointment Slots database
+                    ClassAppointmentSlots findAppointmentSlot = dataSnapshot.getValue(ClassAppointmentSlots.class);
 
-            //to take to appointment confirmation page
-            Intent StudentApptOkIntent = new Intent(this, StudentApptConfirmation.class);
+                    String editSlot = findAppointmentSlot.AppointmentStart;
+                    appointmentChoice.setText(editSlot);
+
+                    String appointmentStatusUpdate = findAppointmentSlot.AppointmentStatus;
+                    appointmentStatus.setText(appointmentStatusUpdate);
+
+                    String appointmentstudentID = findAppointmentSlot.AppointmentStudentUserID;
+                    user.getEmail().setText(appointmentstudentID);*/
+                }
+
+
+                @Override
+                public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                }
+
+                @Override
+                public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+                }
+
+                @Override
+                public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+
+        });
+
+            //to make a toast once they are done and take them back to the student home. CEB deciding not to do a confirmation page for the time being.
+            Toast.makeText(this,"Confirmed: Your appointment is " + appointmentChoice, Toast.LENGTH_SHORT).show();
+            Intent StudentApptOkIntent = new Intent(StudentScheduler.this, StudentHome.class);
             startActivity(StudentApptOkIntent);
-        }
     }
-
+    }
 
 //for spinner selections
     @Override
