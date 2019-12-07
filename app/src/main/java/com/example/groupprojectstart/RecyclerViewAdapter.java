@@ -43,8 +43,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public void onBindViewHolder(@NonNull final RecyclerViewAdapter.ViewHolder holder, int position) {
         holder.textViewApptStart.setText(appointmentSlots.get(position).AppointmentStart);
         holder.textViewCounselorEmail.setText(appointmentSlots.get(position).AppointmentCounselorUserID);
-       //not sure if I need this next portion or not
-
     }
 
 

@@ -66,8 +66,6 @@ public class StudentScheduler extends AppCompatActivity implements View.OnClickL
                 //check out the RecyclerViewAdapter (this is the hard part)
                 recyclerViewCounselorAvailability.setAdapter(adapter);
                 recyclerViewCounselorAvailability.setLayoutManager(new LinearLayoutManager(StudentScheduler.this));
-
-
             }
 
             @Override
@@ -85,8 +83,6 @@ public class StudentScheduler extends AppCompatActivity implements View.OnClickL
         appointmentSlots.add(new ClassAppointmentSlots ("12/21/2019 8AM-9AM", "a@a.com"));
         appointmentSlots.add(new ClassAppointmentSlots ("12/22/2019 8AM-9AM", "a@a.com"));
 *///Setting the layout manager, commonly used is linear
-
-
 
         List<String> reasonCodes = new ArrayList<String>();
         reasonCodes.add("School Work");
