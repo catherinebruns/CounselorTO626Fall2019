@@ -44,9 +44,9 @@ public class CounselorHome extends AppCompatActivity implements View.OnClickList
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
         final DatabaseReference myRef = database.getReference("Slots");
 
-//CEB Connecting to Appointment Slot information to show appointments today.
+/*//CEB Connecting to Appointment Slot information to show appointments today.
         //need to filter to day!
-    /*    myRef.orderByChild("AppointmentStart").addChildEventListener(new ChildEventListener() {
+        myRef.orderByChild("AppointmentStart").addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
 
@@ -75,9 +75,9 @@ public class CounselorHome extends AppCompatActivity implements View.OnClickList
                 public void onCancelled(@NonNull DatabaseError databaseError) {
 
                 }
-            });*/
+            });
 //CEB Connecting Check In text View to show the sad students
-       /* final DatabaseReference myRef2 = database.getReference("CheckInData");
+        final DatabaseReference myRef2 = database.getReference("CheckInData");
 
 
         myRef2.orderByChild("rating").equalTo("ImSad").limitToLast(5).addChildEventListener(new ChildEventListener() {
@@ -107,9 +107,9 @@ public class CounselorHome extends AppCompatActivity implements View.OnClickList
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
-        });*/
+        });
 
-
+//test1
 
         //FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
        // String email = "empty";
@@ -118,7 +118,7 @@ public class CounselorHome extends AppCompatActivity implements View.OnClickList
         //     email = "empty";
       // }
 
-      //  Toast.makeText(this, email, Toast.LENGTH_SHORT).show();
+      //  Toast.makeText(this, email, Toast.LENGTH_SHORT).show();*/
     }
 
     @Override
