@@ -42,7 +42,7 @@ public class StudentScheduler extends AppCompatActivity implements View.OnClickL
     Button buttonStudentApptOk;
     Spinner spinnerReason, spinnerDates, spinnerTimeSlots;
     RecyclerView recyclerViewCounselorAvailability;
-    String appointmentChoice, appointmentStatus;
+    String appointmentChoice;
 
     private FirebaseAuth mAuth;
     //Firebase database
@@ -60,10 +60,7 @@ public class StudentScheduler extends AppCompatActivity implements View.OnClickL
         spinnerTimeSlots = findViewById(R.id.spinnerTimeSlots);
         recyclerViewCounselorAvailability = findViewById(R.id.recyclerViewCounselorAvailability);
 
-
         //need to make new variable with both appointment date and time in it. set as string above.
-        appointmentChoice = spinnerDates + " " + spinnerTimeSlots;
-
 
 
         buttonStudentApptOk.setOnClickListener(this);
@@ -134,22 +131,19 @@ public class StudentScheduler extends AppCompatActivity implements View.OnClickL
     public void onClick(View view) {
         if (buttonStudentApptOk == view){
             //sending selections to firebase
+
             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-            String studentEmail = user.getEmail();
+            final String studentEmail = user.getEmail();
 
             myRef.orderByChild("AppointmentStart").equalTo(appointmentChoice).addChildEventListener(new ChildEventListener() {
 
                 @Override
                 public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-                    //adding values to the Class Appointment Slots database
-                    ClassAppointmentSlots findAppointmentSlot = dataSnapshot.getValue(ClassAppointmentSlots.class);
-                    //creating sub class for editing only specific items
-                        //need to create a class with appointmentStart, appointmentStatus, appointmentStudentUserID;
-                    //?
+                    String key = dataSnapshot.getKey();
 
-               /*     ClassAppointmentSlots editSlot = new ClassAppointmentSlots(appointmentChoice ,"","","Booked",Email,"",spinnerReason);
-                    myRef.push().setValue(editSlot);*/
-
+                    myRef.child(key).child("AppointmentReason").setValue(spinnerReason.getSelectedItem().toString());
+                    myRef.child(key).child("AppointmentStudentUserID").setValue(studentEmail);
+                    myRef.child(key).child("AppointmentStatus").setValue("Booked");
                 }
 
                 @Override
@@ -188,6 +182,8 @@ public class StudentScheduler extends AppCompatActivity implements View.OnClickL
         String TimeSelection = spinnerTimeSlots.getSelectedItem().toString();
         String ReasonSelection = spinnerReason.getSelectedItem().toString();
 
+        appointmentChoice = DateSelection + " " + TimeSelection;
+        Toast.makeText(StudentScheduler.this, appointmentChoice, Toast.LENGTH_LONG).show();
         //need to assign Appointment reason variable the value selected
     }
 
@@ -195,6 +191,11 @@ public class StudentScheduler extends AppCompatActivity implements View.OnClickL
     public void onNothingSelected(AdapterView<?> adapterView) {
 
     }
+
+
+
+
+
 
     //Inserting Dummy Navigation for Development Stages >>> replaces with counselor menu
     public boolean onCreateOptionsMenu(Menu menu){

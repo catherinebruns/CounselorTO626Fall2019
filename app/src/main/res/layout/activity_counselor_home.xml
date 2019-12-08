@@ -8,12 +8,12 @@
 
     <TextView
         android:id="@+id/textViewSadStudents"
-        android:layout_width="350dp"
-        android:layout_height="250dp"
+        android:layout_width="174dp"
+        android:layout_height="223dp"
         android:layout_marginStart="5dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="5dp"
-        android:text="Sad Students"
+        android:text="Students to Check In On: Catherine, Gary, Donnie, Amy, Rohan"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewAppointmentsToday" />
@@ -46,12 +46,12 @@
 
     <TextView
         android:id="@+id/textViewAppointmentsToday"
-        android:layout_width="350dp"
-        android:layout_height="250dp"
+        android:layout_width="164dp"
+        android:layout_height="219dp"
         android:layout_marginStart="5dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="5dp"
-        android:text="Appointments Today"
+        android:text="Appointments Today:  10AM - 11AM; 11AM - 12PM"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewCouselorWelcome" />

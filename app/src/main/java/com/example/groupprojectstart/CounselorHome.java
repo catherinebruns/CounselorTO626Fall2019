@@ -44,8 +44,8 @@ public class CounselorHome extends AppCompatActivity implements View.OnClickList
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
         final DatabaseReference myRef = database.getReference("Slots");
 
-/*//CEB Connecting to Appointment Slot information to show appointments today.
-        //need to filter to day!
+/*//CEB Tried and failed to connect TextViews here to Appointment Slot information to show appointments today.
+
         myRef.orderByChild("AppointmentStart").addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
