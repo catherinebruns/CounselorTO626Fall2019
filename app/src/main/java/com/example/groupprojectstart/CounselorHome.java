@@ -1,6 +1,7 @@
 package com.example.groupprojectstart;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -14,6 +15,9 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -21,7 +25,7 @@ public class CounselorHome extends AppCompatActivity implements View.OnClickList
 
     //creating items for CounselorAvailability activity page
     //Couselor's name will be showed in textViswCounselorWelcome2
-    TextView textViewCounselorWelcome,textViewCounselorWelcome2;
+    TextView textViewCounselorWelcome,textViewCounselorWelcome2, textViewAppointmentsToday, textViewSadStudents;
     private FirebaseAuth mAuth;
 
     //showing the appointment schedule and the number of response
@@ -34,7 +38,80 @@ public class CounselorHome extends AppCompatActivity implements View.OnClickList
 
         mAuth = FirebaseAuth.getInstance();
 
-          FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        textViewAppointmentsToday = findViewById(R.id.textViewAppointmentsToday);
+        textViewSadStudents = findViewById(R.id.textViewSadStudents);
+
+        final FirebaseDatabase database = FirebaseDatabase.getInstance();
+        final DatabaseReference myRef = database.getReference("Slots");
+
+//CEB Connecting to Appointment Slot information to show appointments today.
+        //need to filter to day!
+        myRef.orderByChild("AppointmentStart").addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                ClassAppointmentSlots Slots = dataSnapshot.getValue(ClassAppointmentSlots.class);
+                String findTodayAppt = Slots.AppointmentStart;
+                textViewAppointmentsToday.setText(findTodayAppt);
+
+                }
+
+                @Override
+                public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                }
+
+                @Override
+                public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+                }
+
+                @Override
+                public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
+//CEB Connecting Check In text View to show the sad students
+        final DatabaseReference myRef2 = database.getReference("CheckInData");
+
+
+        myRef2.orderByChild("rating").equalTo("ImSad").limitToLast(5).addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                ClassCheckIn CheckInData = dataSnapshot.getValue(ClassCheckIn.class);
+                String findSadStudents = CheckInData.studentUserID;
+                textViewSadStudents.setText(findSadStudents);
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+
+
+        //FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
        // String email = "empty";
        // String email = user.getEmail();
        // if(email.isEmpty()){

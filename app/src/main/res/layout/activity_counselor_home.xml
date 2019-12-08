@@ -7,6 +7,18 @@
     tools:context=".CounselorHome">
 
     <TextView
+        android:id="@+id/textViewSadStudents"
+        android:layout_width="350dp"
+        android:layout_height="250dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="5dp"
+        android:text="Sad Students"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewAppointmentsToday" />
+
+    <TextView
         android:id="@+id/textViewCouselorWelcome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -31,4 +43,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textViewCouselorWelcome"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewAppointmentsToday"
+        android:layout_width="350dp"
+        android:layout_height="250dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="5dp"
+        android:text="Appointments Today"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewCouselorWelcome" />
 </androidx.constraintlayout.widget.ConstraintLayout>

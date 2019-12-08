@@ -21,6 +21,7 @@ import android.widget.Toast;
 import androidx.recyclerview.widget.RecyclerView;
 
 
+import com.google.android.gms.common.internal.safeparcel.SafeParcelable;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
@@ -62,7 +63,7 @@ public class StudentScheduler extends AppCompatActivity implements View.OnClickL
 
         //need to make new variable with both appointment date and time in it. set as string above.
         appointmentChoice = spinnerDates + " " + spinnerTimeSlots;
-        appointmentStatus = "Booked";
+
 
 
         buttonStudentApptOk.setOnClickListener(this);
@@ -134,25 +135,22 @@ public class StudentScheduler extends AppCompatActivity implements View.OnClickL
         if (buttonStudentApptOk == view){
             //sending selections to firebase
             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-            String email = user.getEmail();
+            String studentEmail = user.getEmail();
 
             myRef.orderByChild("AppointmentStart").equalTo(appointmentChoice).addChildEventListener(new ChildEventListener() {
 
                 @Override
                 public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-                  /*  //adding values to the Class Appointment Slots database
+                    //adding values to the Class Appointment Slots database
                     ClassAppointmentSlots findAppointmentSlot = dataSnapshot.getValue(ClassAppointmentSlots.class);
+                    //creating sub class for editing only specific items
+                        //need to create a class with appointmentStart, appointmentStatus, appointmentStudentUserID;
+                    //?
 
-                    String editSlot = findAppointmentSlot.AppointmentStart;
-                    appointmentChoice.setText(editSlot);
+               /*     ClassAppointmentSlots editSlot = new ClassAppointmentSlots(appointmentChoice ,"","","Booked",Email,"",spinnerReason);
+                    myRef.push().setValue(editSlot);*/
 
-                    String appointmentStatusUpdate = findAppointmentSlot.AppointmentStatus;
-                    appointmentStatus.setText(appointmentStatusUpdate);
-
-                    String appointmentstudentID = findAppointmentSlot.AppointmentStudentUserID;
-                    user.getEmail().setText(appointmentstudentID);*/
                 }
-
 
                 @Override
                 public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
