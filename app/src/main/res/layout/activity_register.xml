@@ -14,36 +14,12 @@
         android:layout_marginTop="40dp"
         android:layout_marginEnd="34dp"
         android:layout_marginBottom="33dp"
-        android:text="Couseror Register Page"
+        android:text="Registration Page"
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/textViewMessage2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/editRegisterTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="8dp"
-        android:ems="10"
-        android:hint="Title - Mr., Mrs., or Ms. "
-        android:inputType="textPersonName"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewCounselorRegister" />
-
-    <EditText
-        android:id="@+id/editRegisterRoomNumber"
-        android:layout_width="wrap_content"
-        android:layout_height="45dp"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="8dp"
-        android:ems="10"
-        android:hint="Room Number"
-        android:inputType="textPersonName"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editRegisterEmail" />
 
     <EditText
         android:id="@+id/editRegisterEmail"
@@ -74,12 +50,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="99dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="61dp"
         android:ems="10"
         android:hint="First Name"
         android:inputType="textPersonName"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editRegisterTitle" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewCounselorRegister" />
 
     <Button
         android:id="@+id/buttonRegisterSubmit"
@@ -105,5 +81,5 @@
         android:hint="Password"
         android:inputType="textPassword"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editRegisterRoomNumber" />
+        app:layout_constraintTop_toBottomOf="@+id/editRegisterEmail" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -98,7 +98,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
         }else if(buttonStudentSignUp == view) {
-            Intent StudentSignUpIntent = new Intent(this, RegisterStudentActivity.class);
+            Intent StudentSignUpIntent = new Intent(this, RegisterActivity.class);
             startActivity(StudentSignUpIntent);
 
         }else if(buttonCounselorSignIn == view) {

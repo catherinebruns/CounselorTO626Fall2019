@@ -25,8 +25,8 @@ import com.google.firebase.database.FirebaseDatabase;
 public class RegisterActivity extends AppCompatActivity implements View.OnClickListener{
 
     //creating items for Register Activity page
-    EditText editRegisterTitle, editRegisterRoomNumber, editRegisterEmail, editRegisterLastName;
-    EditText editRegisterFirstName, editRegisterPassword;
+  //  EditText editRegisterTitle, editRegisterRoomNumber, ;
+    EditText editRegisterFirstName, editRegisterPassword, editRegisterEmail, editRegisterLastName;
     Button buttonRegisterSubmit;
 
     private FirebaseAuth mAuth;
@@ -44,8 +44,8 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     editRegisterEmail = findViewById(R.id.editRegisterEmail);
     editRegisterFirstName = findViewById(R.id.editRegisterFirstName);
     editRegisterLastName = findViewById(R.id.editRegisterLastName);
-    editRegisterRoomNumber = findViewById(R.id.editRegisterRoomNumber);
-    editRegisterTitle = findViewById(R.id.editRegisterTitle);
+   // editRegisterRoomNumber = findViewById(R.id.editRegisterRoomNumber);
+  //  editRegisterTitle = findViewById(R.id.editRegisterTitle);
     editRegisterPassword = findViewById(R.id.editRegisterPassword);
 
     mAuth = FirebaseAuth.getInstance();

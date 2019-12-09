@@ -12,9 +12,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.Calendar;
 import java.util.Date;
 
 public class StudentCheckIn extends AppCompatActivity implements View.OnClickListener{
@@ -25,6 +28,7 @@ public class StudentCheckIn extends AppCompatActivity implements View.OnClickLis
 
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference myRef = database.getReference("CheckInData");
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +42,7 @@ public class StudentCheckIn extends AppCompatActivity implements View.OnClickLis
         buttonImGood.setOnClickListener(this);
         buttonImOkay.setOnClickListener(this);
         buttonImSad.setOnClickListener(this);
+        mAuth = FirebaseAuth.getInstance();
 
     }
 
@@ -47,11 +52,18 @@ public class StudentCheckIn extends AppCompatActivity implements View.OnClickLis
         //Defining the variable which will be added to firebase
         String CheckInButton = "";
 
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        String email = user.getEmail();
+
         if (buttonImGood == view){
             CheckInButton = "ImGood";
+            Intent StudentHome = new Intent(this, StudentHome.class);
+            startActivity(StudentHome);
         }
         else if (buttonImOkay == view){
             CheckInButton = "ImOkay";
+            Intent StudentHome = new Intent(this, StudentHome.class);
+            startActivity(StudentHome);
 
         }
         else if (buttonImSad == view) {
@@ -61,7 +73,12 @@ public class StudentCheckIn extends AppCompatActivity implements View.OnClickLis
             startActivity(ImSadIntent);
         }
         //Adding the firebase data on the checkin
-        ClassCheckIn createcheckinResponse = new ClassCheckIn("","teststudent",CheckInButton,"time1","time2");
+
+        Calendar calendar = Calendar.getInstance();
+        int currentHour = calendar.get(Calendar.HOUR_OF_DAY);
+        int currentMinute = calendar.get(Calendar.MINUTE);
+
+        ClassCheckIn createcheckinResponse = new ClassCheckIn("",email,CheckInButton,"",currentHour+":"+currentMinute);
         myRef.push().setValue(createcheckinResponse);
         Toast.makeText(this, "success", Toast.LENGTH_SHORT).show();
 

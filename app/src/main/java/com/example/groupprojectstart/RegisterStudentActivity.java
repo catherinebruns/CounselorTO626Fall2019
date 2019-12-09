@@ -28,7 +28,7 @@ public class RegisterStudentActivity extends AppCompatActivity implements View.O
     EditText editStudentRegisterPassword, editStudentRegisterEmail;
 
     //CEB synced to firebase
-    private FirebaseAuth mAuth;
+    FirebaseAuth mAuth;
     //FirebaseDatabase database = FirebaseDatabase.getInstance();
     //DatabaseReference myref = database.getReference("StudentID");
 
@@ -57,8 +57,52 @@ public class RegisterStudentActivity extends AppCompatActivity implements View.O
         //        editRegisterLastName.getText(), editRegisterRoomNumber.getText(),
         //        editRegisterTitle.getText());
 
+        String email = editStudentRegisterEmail.getText().toString().trim();
+        String password = editStudentRegisterPassword.getText().toString().trim();
 
-        //need to figure out how to have two separate authentifications
+
+        //Registration function of Counselor @Rohan
+        mAuth.createUserWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            //if login is successful
+                            Toast.makeText(RegisterStudentActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
+                            //creating a new intent to send you back to the main activity once registration is successful
+                            Intent intent = new Intent(RegisterStudentActivity.this, MainActivity.class);
+                            startActivity(intent);
+
+                        } else {
+                            //if login is unsuccessful
+                            Toast.makeText(RegisterStudentActivity.this, "Failed", Toast.LENGTH_SHORT).show();
+
+
+                        }
+                    }
+                });
+
+    /*    mAuth.createUserWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            // Sign in success, update UI with the signed-in user's information
+                            Toast.makeText(RegisterStudentActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
+
+                        } else {
+                            // If sign in fails, display a message to the user.
+                            Toast.makeText(RegisterStudentActivity.this, "Login Failed", Toast.LENGTH_SHORT).show();
+
+                        }
+
+                        // ...
+                    }
+                });*/
+
+
+
+      /*  //need to figure out how to have two separate authentications
         mAuth.createUserWithEmailAndPassword(editStudentRegisterEmail.getText().toString(), editStudentRegisterPassword.getText().toString())
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -69,8 +113,8 @@ public class RegisterStudentActivity extends AppCompatActivity implements View.O
                             Toast.makeText(RegisterStudentActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
 
                             //creating a new intent to send you back to the main activity once registration is successful
-                            Intent intent = new Intent(RegisterStudentActivity.this, MainActivity.class);
-                            startActivity(intent);
+                         //   Intent intent = new Intent(RegisterStudentActivity.this, MainActivity.class);
+                          //  startActivity(intent);
 
                         } else {
                             //if login is unsuccessful
@@ -78,8 +122,8 @@ public class RegisterStudentActivity extends AppCompatActivity implements View.O
                         }
 
                     }
-                });
-    }
+                });*/
+        }
 
     //Inserting Dummy Navigation for Development Stages >>>> will be removed from this page later
     public boolean onCreateOptionsMenu(Menu menu){
