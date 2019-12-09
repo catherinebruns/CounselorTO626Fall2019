@@ -45,7 +45,7 @@
         android:id="@+id/spinnerDates"
         android:layout_width="197dp"
         android:layout_height="37dp"
-        android:layout_marginStart="5dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="50dp"
         android:layout_marginEnd="10dp"
         android:background="#32FFFFFF"
