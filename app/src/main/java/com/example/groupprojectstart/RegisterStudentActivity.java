@@ -110,7 +110,7 @@ public class RegisterStudentActivity extends AppCompatActivity implements View.O
                         if (task.isSuccessful()) {
                             //if login is successful
 
-                            Toast.makeText(RegisterStudentActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(RegisterStudentActivity.this, "Registration Successful", Toast.LENGTH_SHORT).show();
 
                             //creating a new intent to send you back to the main activity once registration is successful
                          //   Intent intent = new Intent(RegisterStudentActivity.this, MainActivity.class);
@@ -118,7 +118,7 @@ public class RegisterStudentActivity extends AppCompatActivity implements View.O
 
                         } else {
                             //if login is unsuccessful
-                            Toast.makeText(RegisterStudentActivity.this, "Failed", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(RegisterStudentActivity.this, "Registration Failed", Toast.LENGTH_SHORT).show();
                         }
 
                     }
