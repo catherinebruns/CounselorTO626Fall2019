@@ -23,6 +23,9 @@ import com.google.firebase.database.FirebaseDatabase;
 public class RegisterStudentActivity extends AppCompatActivity implements View.OnClickListener {
 
     //creating items for RegisterStudent Activity page
+    //This activity is not currently being used.
+    // We are using the Register Activity for both Students and counselors
+
     Button buttonStudentRegisterSubmit;
     EditText editStudentRegisterFirstName, editStudentRegisterLastName;
     EditText editStudentRegisterPassword, editStudentRegisterEmail;

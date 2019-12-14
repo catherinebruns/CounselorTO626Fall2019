@@ -22,7 +22,6 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    //why do we have two separate options for button sign in/up here?
     //creating items for Main Activity page
     Button buttonStudentSignIn,buttonStudentSignUp;
     Button buttonCounselorSignIn,buttonCounselorSignUp;
@@ -36,8 +35,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mAuth = FirebaseAuth.getInstance();
-        //creating buttons for main activity page
 
+        //connecting UI to buttons for main activity page
         buttonStudentSignIn = findViewById(R.id.buttonStudentSignIn);
         buttonCounselorSignIn = findViewById(R.id.buttonCounselorSignIn);
         buttonStudentSignUp = findViewById(R.id.buttonStudentSignUp);
@@ -60,7 +59,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
       //  }
    // }
 
-    //This page doesn't work, Need to be fixed.
+    //Student and Counselor Sign in Page
     @Override
     public void onClick(View view) {
        final Intent CounselorSignInIntent = new Intent(this, CounselorHome.class);
@@ -138,7 +137,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
-    //Inserting Dummy Navigation for Development Stages  <<< Menu is not necessary in main page
+    //Inserting Dummy Navigation for Development Stages  <<< Menu is not necessary in main page.
+    // Comment Out.
+    /*
     public boolean onCreateOptionsMenu(Menu menu){
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.dummymenu, menu);
@@ -186,5 +187,5 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             startActivity(RegisterStudentIntent);
         }
         return super.onOptionsItemSelected(item);
-    }
+    }*/
 }

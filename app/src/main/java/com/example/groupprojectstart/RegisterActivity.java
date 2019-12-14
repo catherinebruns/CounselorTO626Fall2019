@@ -52,9 +52,8 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
     }
 
-    //Register function of Counselor
-    //This page doesn't work, Need to be fixed.
-    //Title should be chose from pull down if possible???
+    //Register function for Counselor and Student
+
     @Override
     public void onClick(View view) {
         //validate(editRegisterEmail.getText(), editRegisterFirstName.getText(),
@@ -77,7 +76,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
                         } else {
                             //if login is unsuccessful
-                            Toast.makeText(RegisterActivity.this, "Registration Failed", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(RegisterActivity.this, "Registration Failed. Choose a 6 Digit Password", Toast.LENGTH_SHORT).show();
 
                         }
 
@@ -86,7 +85,8 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
     }
 
-    //Inserting Dummy Navigation for Development Stages >>>> will be removed from this page later
+    //Inserting Dummy Navigation for Development Stages >>>> Menu not necessary. Comment Out
+    /*
     public boolean onCreateOptionsMenu(Menu menu){
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.dummymenu, menu);
@@ -135,5 +135,5 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             startActivity(RegisterStudentIntent);
         }
         return super.onOptionsItemSelected(item);
-    }
+    }*/
 }

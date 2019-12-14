@@ -24,12 +24,11 @@ import com.google.firebase.database.FirebaseDatabase;
 public class CounselorHome extends AppCompatActivity implements View.OnClickListener{
 
     //creating items for CounselorAvailability activity page
-    //Couselor's name will be showed in textViswCounselorWelcome2
+    //Counselor's name will be showed in textViewCounselorWelcome2
     TextView textViewCounselorWelcome,textViewCounselorWelcome2, textViewAppointmentsToday, textViewSadStudents;
     private FirebaseAuth mAuth;
 
-    //showing the appointment schedule and the number of response
-
+    //showing the appointment schedule and the number of check in responses. Currently a static display
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -126,45 +125,25 @@ public class CounselorHome extends AppCompatActivity implements View.OnClickList
 
     }
 
-    //Inserting Dummy Navigation for Development Stages >>> replaces with counselor menu by Amy
+    //Create counselor specific menu
     public boolean onCreateOptionsMenu(Menu menu){
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.dummymenu, menu);
+        inflater.inflate(R.menu.counselormenu, menu);
         return  super.onCreateOptionsMenu(menu);
     }
+
     @Override
     public  boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId() == R.id.CounselorAvailability) {
-            Intent HomeIntent = new Intent(this, CounselorAvailability.class);
-            startActivity(HomeIntent);
+        if (item.getItemId() == R.id.itemHome) {
+            Toast.makeText(this, "You are on the home page", Toast.LENGTH_SHORT).show();
         }
-        else if (item.getItemId() == R.id.CounselorCheckInManager){
-            Intent SettingsIntent = new Intent(this, CounselorCheckInManager.class);
-            startActivity(SettingsIntent);
-        }
-        else if (item.getItemId() == R.id.CounselorHome){
-            Intent CheckInManagerIntent = new Intent(this,CounselorHome.class);
-            startActivity(CheckInManagerIntent);
-        }
-        else if (item.getItemId() == R.id.MainActivity){
-            Intent MyAvailabilityIntent = new Intent(this, MainActivity.class);
+        else if (item.getItemId() == R.id.itemMyAvailability) {
+            Intent MyAvailabilityIntent = new Intent(this, CounselorAvailability.class);
             startActivity(MyAvailabilityIntent);
         }
-        else if (item.getItemId() == R.id.StudentApptConfirmation){
-            Intent MyAvailabilityIntent = new Intent(this, StudentApptConfirmation.class);
-            startActivity(MyAvailabilityIntent);
-        }
-        else if (item.getItemId() == R.id.StudentCheckIn){
-            Intent MyAvailabilityIntent = new Intent(this, StudentCheckIn.class);
-            startActivity(MyAvailabilityIntent);
-        }
-        else if (item.getItemId() == R.id.StudentHome){
-            Intent MyAvailabilityIntent = new Intent(this, StudentHome.class);
-            startActivity(MyAvailabilityIntent);
-        }
-        else if (item.getItemId() == R.id.StudentScheduler){
-            Intent MyAvailabilityIntent = new Intent(this, StudentScheduler.class);
-            startActivity(MyAvailabilityIntent);
+        else if (item.getItemId() == R.id.itemLogout){
+            Intent LogoutIntent = new Intent(this, MainActivity.class);
+            startActivity(LogoutIntent);
         }
         return super.onOptionsItemSelected(item);
     }

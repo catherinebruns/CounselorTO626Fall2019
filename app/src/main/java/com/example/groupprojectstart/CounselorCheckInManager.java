@@ -10,6 +10,11 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 
+/* Not currently leveraging check-in manager.
+Idea would be to proactively push check ins to a list of selected students
+and to see who has not yet responded to a proactively pushed check in.
+For now, check ins are initiated by student on their home screen.*/
+
 public class CounselorCheckInManager extends AppCompatActivity implements View.OnClickListener{
 
     @Override
