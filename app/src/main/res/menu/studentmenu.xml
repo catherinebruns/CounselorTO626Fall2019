@@ -6,6 +6,12 @@
         android:id="@+id/itemHome"
         android:title="Home" />
     <item
-        android:id="@+id/itemSettings"
-        android:title="Settings" />
+        android:id="@+id/itemCheckin"
+        android:title="Check in" />
+    <item
+        android:id="@+id/itemScheduleAppt"
+        android:title="Schedule Appointment" />
+    <item
+        android:id="@+id/itemStudentLogout"
+        android:title="Logout" />
 </menu>

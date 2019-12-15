@@ -28,7 +28,9 @@ public class CounselorHome extends AppCompatActivity implements View.OnClickList
     TextView textViewCounselorWelcome,textViewCounselorWelcome2, textViewAppointmentsToday, textViewSadStudents;
     private FirebaseAuth mAuth;
 
-    //showing the appointment schedule and the number of check in responses. Currently a static display
+    //showing the appointment schedule and the number of check in responses.
+    // Currently a static display because Tyler did not attend his office hours
+    // twice when time was carved out to complete
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -11,11 +11,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class StudentHome extends AppCompatActivity implements View.OnClickListener {
 
     //creating items for StudentHome Activity page
-    //student's name will be showed in textViswStudentWelcome2
+    //student's name will be showed in textViewStudentWelcome2
     Button buttonStudentCheckIn, buttonStudentScheduleAppt;
     TextView textViewStudentWelcome,textViewStudentWelcome2;
 
@@ -32,7 +33,7 @@ public class StudentHome extends AppCompatActivity implements View.OnClickListen
 
     }
 
-    //moving to studentCheckin or studentSchedule Appointment
+    //home page prompts studentCheckin or studentSchedule Appointment
     @Override
     public void onClick(View view) {
         if (buttonStudentCheckIn == view){
@@ -45,57 +46,30 @@ public class StudentHome extends AppCompatActivity implements View.OnClickListen
         }
     }
 
-    //Inserting Dummy Navigation for Development Stages >>> replaces with counselor menu
+    //student specific menu
     public boolean onCreateOptionsMenu(Menu menu){
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.dummymenu, menu);
+        inflater.inflate(R.menu.studentmenu, menu);
         return  super.onCreateOptionsMenu(menu);
     }
     @Override
     public  boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId() == R.id.CounselorAvailability) {
-            Intent HomeIntent = new Intent(this, CounselorAvailability.class);
-            startActivity(HomeIntent);
+        if (item.getItemId() == R.id.itemHome) {
+            Toast.makeText(this, "You are on the home page", Toast.LENGTH_SHORT).show();
         }
-        else if (item.getItemId() == R.id.CounselorCheckInManager){
-            Intent SettingsIntent = new Intent(this, CounselorCheckInManager.class);
-            startActivity(SettingsIntent);
+        else if (item.getItemId() == R.id.itemScheduleAppt) {
+            Intent ScheduleIntent = new Intent(this, StudentScheduler.class);
+            startActivity(ScheduleIntent);
         }
-        else if (item.getItemId() == R.id.CounselorHome){
-            Intent CheckInManagerIntent = new Intent(this,CounselorHome.class);
-            startActivity(CheckInManagerIntent);
+        else if (item.getItemId() == R.id.itemCheckin) {
+            Intent CheckinIntent = new Intent(this, StudentCheckIn.class);
+            startActivity(CheckinIntent);
         }
-        else if (item.getItemId() == R.id.MainActivity){
-            Intent MyAvailabilityIntent = new Intent(this, MainActivity.class);
-            startActivity(MyAvailabilityIntent);
-        }
-        else if (item.getItemId() == R.id.StudentApptConfirmation){
-            Intent MyAvailabilityIntent = new Intent(this, StudentApptConfirmation.class);
-            startActivity(MyAvailabilityIntent);
+        else if (item.getItemId() == R.id.itemStudentLogout){
+            Intent LogoutIntent = new Intent(this, MainActivity.class);
+            startActivity(LogoutIntent);
         }
 
-        else if (item.getItemId() == R.id.StudentCheckIn){
-            Intent MyAvailabilityIntent = new Intent(this, StudentCheckIn.class);
-            startActivity(MyAvailabilityIntent);
-        }
-
-        else if (item.getItemId() == R.id.StudentHome){
-            Intent MyAvailabilityIntent = new Intent(this, StudentHome.class);
-            startActivity(MyAvailabilityIntent);
-        }
-
-        else if (item.getItemId() == R.id.StudentScheduler){
-            Intent MyAvailabilityIntent = new Intent(this, StudentScheduler.class);
-            startActivity(MyAvailabilityIntent);
-        }
-        else if (item.getItemId() == R.id.Register){
-            Intent RegisterIntent = new Intent(this, RegisterActivity.class);
-            startActivity(RegisterIntent);
-        }
-        else if (item.getItemId() == R.id.RegisterStudent){
-            Intent RegisterStudentIntent = new Intent(this, RegisterStudentActivity.class);
-            startActivity(RegisterStudentIntent);
-        }
         return super.onOptionsItemSelected(item);
     }
 }

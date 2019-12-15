@@ -14,6 +14,8 @@ import android.widget.Button;
 public class StudentApptConfirmation extends AppCompatActivity implements View.OnClickListener{
 
     //creating items for StudentAppointConfirmation Activity page
+    //not using page currently. in future this page could show most recently booked appointment
+    // along with all upcoming appointments
     Button buttonStudentApptConfirmationExit;
 
     @Override
@@ -27,14 +29,12 @@ public class StudentApptConfirmation extends AppCompatActivity implements View.O
 
     }
 
-    //Going back to home page <<< Is it necessary? we will have student menu
     @Override
     public void onClick(View view) {
         if (buttonStudentApptConfirmationExit == view);
         //linking this back to the Student home page
         Intent StudentApptConfirmationExitIntent = new Intent(this, StudentHome.class);
         startActivity(StudentApptConfirmationExitIntent);
-
     }
 
     //Inserting Dummy Navigation for Development Stages >>> replaces with counselor menu
